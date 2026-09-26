@@ -1,0 +1,1727 @@
+[JOB] ===== START =====
+DATE               = Tue Feb 10 17:18:50 EST 2026
+JOB_TAG            = hf-train_1902000
+OUT_DIR            = logs_train/hf-train_1902000
+ENV_SH             = /home/<user>/env/env.sh
+
+[CFG] ===== Config =====
+PHASE              = train
+FRAMEWORK          = hf
+MODEL              = meta-llama/Llama-3.1-70B-Instruct
+METHOD             = qlora
+SEQ_LEN            = 2048
+BATCH_SIZE         = 2
+ACCUM_STEPS        = 16
+TOTAL_STEPS        = 999999
+LR                 = 2e-5
+WARMUP             = 100
+PRINT_EVERY        = 1
+DATASET_SIZE       = 52000
+PIN_MEMORY         = 1
+SLEEP_EVERY        = 0
+SLEEP_SEC          = 0
+MIXED_PREC         = no
+DYNAMO             = no
+
+[SLURM] ===== Env =====
+HOSTNAME           = node-b.<cluster>
+JOB_ID             = 1902000
+NODELIST           = node-b
+NNODES             = 1
+NODE_RANK          = 0
+CPUS_TASK          = 16
+MEM_REQ            = 65536
+GPUS_ALLOC         = 4
+
+[DIST] ===== Distributed =====
+PARALLEL_MODE      = tp
+SYNC_MODE          = async
+MASTER_ADDR        = node-b
+MASTER_PORT        = 29500
+PROCS_NODE         = 1
+WORLD_SIZE         = 1
+CUDA_DEV           = 0,1,2,3
+HF_TP_MODE         = 1
+
+[HW] ===== Snapshot =====
+GPUS_SLURM         = 4
+NUM_GPUS           = 4
+GPU_NAME           = NVIDIA H200
+GPU_MEM            = 140 GiB
+DRIVER             = 580.82.07
+CUDA_VER           = 13.0
+CPU_MODEL          = INTEL(R) XEON(R) PLATINUM 8592+
+CPU_SOCKETS        = 2
+CPU_THREADS        = 128
+MEM_TOTAL          = 2.0Ti
+MEM_FREE           = 1.7Ti
+
+[JOB] start nvidia-smi power logging...
+
+[JOB] ===== RUN TRAINING =====
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_machines` was set to a value of `1`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+[INFO] loading meta-llama/Llama-3.1-70B-Instruct with method=qlora
+[INFO] Prefetching meta-llama/Llama-3.1-70B-Instruct (QLoRA, 4-bit quant).
+
+Loading checkpoint shards:   0%|          | 0/30 [00:00<?, ?it/s]
+Loading checkpoint shards:   3%|▎         | 1/30 [00:17<08:20, 17.25s/it]
+Loading checkpoint shards:   7%|▋         | 2/30 [00:26<05:45, 12.32s/it]
+Loading checkpoint shards:  10%|█         | 3/30 [00:35<05:00, 11.13s/it]
+Loading checkpoint shards:  13%|█▎        | 4/30 [00:44<04:28, 10.33s/it]
+Loading checkpoint shards:  17%|█▋        | 5/30 [00:55<04:22, 10.49s/it]
+Loading checkpoint shards:  20%|██        | 6/30 [01:06<04:13, 10.55s/it]
+Loading checkpoint shards:  23%|██▎       | 7/30 [01:17<04:05, 10.67s/it]
+Loading checkpoint shards:  27%|██▋       | 8/30 [01:27<03:54, 10.66s/it]
+Loading checkpoint shards:  30%|███       | 9/30 [01:40<03:56, 11.26s/it]
+Loading checkpoint shards:  33%|███▎      | 10/30 [01:48<03:27, 10.35s/it]
+Loading checkpoint shards:  37%|███▋      | 11/30 [02:00<03:24, 10.78s/it]
+Loading checkpoint shards:  40%|████      | 12/30 [02:10<03:08, 10.49s/it]
+Loading checkpoint shards:  43%|████▎     | 13/30 [02:19<02:53, 10.21s/it]
+Loading checkpoint shards:  47%|████▋     | 14/30 [02:29<02:40, 10.04s/it]
+Loading checkpoint shards:  50%|█████     | 15/30 [02:39<02:29,  9.96s/it]
+Loading checkpoint shards:  53%|█████▎    | 16/30 [02:47<02:11,  9.42s/it]
+Loading checkpoint shards:  57%|█████▋    | 17/30 [02:56<01:59,  9.21s/it]
+Loading checkpoint shards:  60%|██████    | 18/30 [03:08<02:02, 10.23s/it]
+Loading checkpoint shards:  63%|██████▎   | 19/30 [03:17<01:46,  9.68s/it]
+Loading checkpoint shards:  67%|██████▋   | 20/30 [03:25<01:31,  9.13s/it]
+Loading checkpoint shards:  70%|███████   | 21/30 [03:34<01:21,  9.07s/it]
+Loading checkpoint shards:  73%|███████▎  | 22/30 [03:42<01:10,  8.85s/it]
+Loading checkpoint shards:  77%|███████▋  | 23/30 [03:52<01:03,  9.10s/it]
+Loading checkpoint shards:  80%|████████  | 24/30 [04:03<00:58,  9.79s/it]
+Loading checkpoint shards:  83%|████████▎ | 25/30 [04:11<00:46,  9.30s/it]
+Loading checkpoint shards:  87%|████████▋ | 26/30 [04:23<00:40, 10.13s/it]
+Loading checkpoint shards:  90%|█████████ | 27/30 [04:31<00:28,  9.54s/it]
+Loading checkpoint shards:  93%|█████████▎| 28/30 [04:44<00:20, 10.45s/it]
+Loading checkpoint shards:  97%|█████████▋| 29/30 [04:58<00:11, 11.42s/it]
+Loading checkpoint shards: 100%|██████████| 30/30 [05:02<00:00,  9.25s/it]
+Loading checkpoint shards: 100%|██████████| 30/30 [05:02<00:00, 10.08s/it]
+[INFO] method=qlora, applying LoRA adapters.
+trainable params: 131,072,000 || all params: 70,684,778,496 || trainable%: 0.1854
+[INFO] Model dtype: torch.float32
+[INFO] run_burn start sync_mode=async
+[INFO] gradient_accumulation steps = 16
+[INFO] run_burn start sync_mode=async
+[INFO] gradient_accumulation steps = 16
+[17:26:48.122][FORWARD][START] micro_step=1
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+/scratch/<user>/env/miniforge3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:1044: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+[17:26:51.610][FORWARD][END] duration=3.483s | loss=1.9132
+[17:26:51.610][BACKWARD][START] 
+[17:26:56.454][BACKWARD][END] duration=4.844s
+[17:26:56.695][FORWARD][START] micro_step=2
+[17:26:59.028][FORWARD][END] duration=1.894s | loss=2.4249
+[17:26:59.028][BACKWARD][START] 
+[17:27:03.749][BACKWARD][END] duration=4.721s
+[17:27:03.988][FORWARD][START] micro_step=3
+[17:27:06.319][FORWARD][END] duration=1.891s | loss=2.7182
+[17:27:06.319][BACKWARD][START] 
+[17:27:11.031][BACKWARD][END] duration=4.712s
+[17:27:11.271][FORWARD][START] micro_step=4
+[17:27:13.600][FORWARD][END] duration=1.889s | loss=2.0686
+[17:27:13.600][BACKWARD][START] 
+[17:27:18.305][BACKWARD][END] duration=4.705s
+[17:27:18.544][FORWARD][START] micro_step=5
+[17:27:20.878][FORWARD][END] duration=1.894s | loss=2.1439
+[17:27:20.878][BACKWARD][START] 
+[17:27:25.593][BACKWARD][END] duration=4.715s
+[17:27:25.832][FORWARD][START] micro_step=6
+[17:27:28.164][FORWARD][END] duration=1.893s | loss=1.4261
+[17:27:28.164][BACKWARD][START] 
+[17:27:32.887][BACKWARD][END] duration=4.723s
+[17:27:33.127][FORWARD][START] micro_step=7
+[17:27:35.456][FORWARD][END] duration=1.890s | loss=1.8532
+[17:27:35.457][BACKWARD][START] 
+[17:27:40.175][BACKWARD][END] duration=4.719s
+[17:27:40.416][FORWARD][START] micro_step=8
+[17:27:42.750][FORWARD][END] duration=1.895s | loss=2.3173
+[17:27:42.750][BACKWARD][START] 
+[17:27:47.474][BACKWARD][END] duration=4.724s
+[17:27:47.715][FORWARD][START] micro_step=9
+[17:27:50.045][FORWARD][END] duration=1.892s | loss=2.5114
+[17:27:50.046][BACKWARD][START] 
+[17:27:54.762][BACKWARD][END] duration=4.716s
+[17:27:55.004][FORWARD][START] micro_step=10
+[17:27:57.334][FORWARD][END] duration=1.891s | loss=2.1703
+[17:27:57.335][BACKWARD][START] 
+[17:28:02.046][BACKWARD][END] duration=4.712s
+[17:28:02.286][FORWARD][START] micro_step=11
+[17:28:04.621][FORWARD][END] duration=1.895s | loss=2.7403
+[17:28:04.622][BACKWARD][START] 
+[17:28:09.349][BACKWARD][END] duration=4.728s
+[17:28:09.589][FORWARD][START] micro_step=12
+[17:28:11.920][FORWARD][END] duration=1.892s | loss=2.8293
+[17:28:11.920][BACKWARD][START] 
+[17:28:16.632][BACKWARD][END] duration=4.711s
+[17:28:16.871][FORWARD][START] micro_step=13
+[17:28:19.206][FORWARD][END] duration=1.896s | loss=2.4000
+[17:28:19.207][BACKWARD][START] 
+[17:28:23.927][BACKWARD][END] duration=4.720s
+[17:28:24.167][FORWARD][START] micro_step=14
+[17:28:26.502][FORWARD][END] duration=1.895s | loss=2.8912
+[17:28:26.502][BACKWARD][START] 
+[17:28:31.228][BACKWARD][END] duration=4.726s
+[17:28:31.468][FORWARD][START] micro_step=15
+[17:28:33.800][FORWARD][END] duration=1.894s | loss=2.2780
+[17:28:33.800][BACKWARD][START] 
+[17:28:38.512][BACKWARD][END] duration=4.712s
+[17:28:38.751][FORWARD][START] micro_step=16
+[17:28:41.085][FORWARD][END] duration=1.894s | loss=2.2126
+[17:28:41.086][BACKWARD][START] 
+[17:28:45.810][BACKWARD][END] duration=4.724s
+[17:28:46.049][STEP][BEGIN] 
+[17:28:46.407][STEP][DONE] duration=0.358s | global_step=1
+[step 0001] loss=36.8984 lr=2.00e-07 tokens/s=553.8
+[17:28:46.408][FORWARD][START] micro_step=17
+[17:28:48.742][FORWARD][END] duration=1.895s | loss=2.5101
+[17:28:48.743][BACKWARD][START] 
+[17:28:53.467][BACKWARD][END] duration=4.724s
+[17:28:53.708][FORWARD][START] micro_step=18
+[17:28:56.037][FORWARD][END] duration=1.891s | loss=3.3094
+[17:28:56.037][BACKWARD][START] 
+[17:29:00.749][BACKWARD][END] duration=4.712s
+[17:29:00.989][FORWARD][START] micro_step=19
+[17:29:03.323][FORWARD][END] duration=1.895s | loss=2.7566
+[17:29:03.323][BACKWARD][START] 
+[17:29:08.040][BACKWARD][END] duration=4.717s
+[17:29:08.281][FORWARD][START] micro_step=20
+[17:29:10.615][FORWARD][END] duration=1.893s | loss=1.3832
+[17:29:10.615][BACKWARD][START] 
+[17:29:15.331][BACKWARD][END] duration=4.716s
+[17:29:15.570][FORWARD][START] micro_step=21
+[17:29:17.914][FORWARD][END] duration=1.906s | loss=2.4282
+[17:29:17.914][BACKWARD][START] 
+[17:29:22.629][BACKWARD][END] duration=4.715s
+[17:29:22.869][FORWARD][START] micro_step=22
+[17:29:25.204][FORWARD][END] duration=1.896s | loss=2.2701
+[17:29:25.204][BACKWARD][START] 
+[17:29:29.935][BACKWARD][END] duration=4.731s
+[17:29:30.175][FORWARD][START] micro_step=23
+[17:29:32.508][FORWARD][END] duration=1.895s | loss=2.7757
+[17:29:32.508][BACKWARD][START] 
+[17:29:37.230][BACKWARD][END] duration=4.722s
+[17:29:37.470][FORWARD][START] micro_step=24
+[17:29:39.800][FORWARD][END] duration=1.890s | loss=2.4325
+[17:29:39.800][BACKWARD][START] 
+[17:29:44.507][BACKWARD][END] duration=4.708s
+[17:29:44.747][FORWARD][START] micro_step=25
+[17:29:47.078][FORWARD][END] duration=1.891s | loss=2.3121
+[17:29:47.078][BACKWARD][START] 
+[17:29:51.790][BACKWARD][END] duration=4.712s
+[17:29:52.029][FORWARD][START] micro_step=26
+[17:29:54.356][FORWARD][END] duration=1.889s | loss=1.8278
+[17:29:54.356][BACKWARD][START] 
+[17:29:59.065][BACKWARD][END] duration=4.709s
+[17:29:59.305][FORWARD][START] micro_step=27
+[17:30:01.638][FORWARD][END] duration=1.894s | loss=2.0931
+[17:30:01.638][BACKWARD][START] 
+[17:30:06.348][BACKWARD][END] duration=4.710s
+[17:30:06.588][FORWARD][START] micro_step=28
+[17:30:08.919][FORWARD][END] duration=1.892s | loss=1.9487
+[17:30:08.920][BACKWARD][START] 
+[17:30:13.627][BACKWARD][END] duration=4.707s
+[17:30:13.866][FORWARD][START] micro_step=29
+[17:30:16.198][FORWARD][END] duration=1.893s | loss=2.7157
+[17:30:16.198][BACKWARD][START] 
+[17:30:20.909][BACKWARD][END] duration=4.710s
+[17:30:21.149][FORWARD][START] micro_step=30
+[17:30:23.484][FORWARD][END] duration=1.895s | loss=2.9462
+[17:30:23.484][BACKWARD][START] 
+[17:30:28.199][BACKWARD][END] duration=4.715s
+[17:30:28.439][FORWARD][START] micro_step=31
+[17:30:30.769][FORWARD][END] duration=1.891s | loss=2.7516
+[17:30:30.769][BACKWARD][START] 
+[17:30:35.486][BACKWARD][END] duration=4.717s
+[17:30:35.726][FORWARD][START] micro_step=32
+[17:30:38.060][FORWARD][END] duration=1.895s | loss=2.2740
+[17:30:38.060][BACKWARD][START] 
+[17:30:42.782][BACKWARD][END] duration=4.722s
+[17:30:43.023][STEP][BEGIN] 
+[17:30:43.095][STEP][DONE] duration=0.072s | global_step=2
+[step 0002] loss=38.7350 lr=4.00e-07 tokens/s=561.6
+[17:30:43.095][FORWARD][START] micro_step=33
+[17:30:45.425][FORWARD][END] duration=1.892s | loss=1.4036
+[17:30:45.426][BACKWARD][START] 
+[17:30:50.144][BACKWARD][END] duration=4.718s
+[17:30:50.385][FORWARD][START] micro_step=34
+[17:30:52.715][FORWARD][END] duration=1.891s | loss=1.7920
+[17:30:52.715][BACKWARD][START] 
+[17:30:57.434][BACKWARD][END] duration=4.718s
+[17:30:57.674][FORWARD][START] micro_step=35
+[17:31:00.008][FORWARD][END] duration=1.894s | loss=2.4749
+[17:31:00.008][BACKWARD][START] 
+[17:31:04.729][BACKWARD][END] duration=4.721s
+[17:31:04.968][FORWARD][START] micro_step=36
+[17:31:07.304][FORWARD][END] duration=1.896s | loss=2.0060
+[17:31:07.304][BACKWARD][START] 
+[17:31:12.032][BACKWARD][END] duration=4.728s
+[17:31:12.272][FORWARD][START] micro_step=37
+[17:31:14.602][FORWARD][END] duration=1.892s | loss=1.9053
+[17:31:14.603][BACKWARD][START] 
+[17:31:19.331][BACKWARD][END] duration=4.728s
+[17:31:19.571][FORWARD][START] micro_step=38
+[17:31:21.907][FORWARD][END] duration=1.896s | loss=2.6916
+[17:31:21.907][BACKWARD][START] 
+[17:31:26.634][BACKWARD][END] duration=4.728s
+[17:31:26.895][FORWARD][START] micro_step=39
+[17:31:29.276][FORWARD][END] duration=1.945s | loss=2.2486
+[17:31:29.276][BACKWARD][START] 
+[17:31:33.990][BACKWARD][END] duration=4.714s
+[17:31:34.230][FORWARD][START] micro_step=40
+[17:31:36.565][FORWARD][END] duration=1.896s | loss=1.8994
+[17:31:36.565][BACKWARD][START] 
+[17:31:41.287][BACKWARD][END] duration=4.722s
+[17:31:41.527][FORWARD][START] micro_step=41
+[17:31:43.860][FORWARD][END] duration=1.893s | loss=1.9533
+[17:31:43.861][BACKWARD][START] 
+[17:31:48.567][BACKWARD][END] duration=4.707s
+[17:31:48.807][FORWARD][START] micro_step=42
+[17:31:51.141][FORWARD][END] duration=1.895s | loss=2.2121
+[17:31:51.142][BACKWARD][START] 
+[17:31:55.854][BACKWARD][END] duration=4.713s
+[17:31:56.094][FORWARD][START] micro_step=43
+[17:31:58.428][FORWARD][END] duration=1.895s | loss=1.9217
+[17:31:58.428][BACKWARD][START] 
+[17:32:03.149][BACKWARD][END] duration=4.721s
+[17:32:03.389][FORWARD][START] micro_step=44
+[17:32:05.721][FORWARD][END] duration=1.894s | loss=2.6179
+[17:32:05.722][BACKWARD][START] 
+[17:32:10.440][BACKWARD][END] duration=4.718s
+[17:32:10.681][FORWARD][START] micro_step=45
+[17:32:13.019][FORWARD][END] duration=1.898s | loss=3.2157
+[17:32:13.020][BACKWARD][START] 
+[17:32:17.731][BACKWARD][END] duration=4.712s
+[17:32:17.971][FORWARD][START] micro_step=46
+[17:32:20.304][FORWARD][END] duration=1.894s | loss=1.9718
+[17:32:20.304][BACKWARD][START] 
+[17:32:25.029][BACKWARD][END] duration=4.725s
+[17:32:25.269][FORWARD][START] micro_step=47
+[17:32:27.602][FORWARD][END] duration=1.893s | loss=2.2142
+[17:32:27.602][BACKWARD][START] 
+[17:32:32.327][BACKWARD][END] duration=4.725s
+[17:32:32.567][FORWARD][START] micro_step=48
+[17:32:34.900][FORWARD][END] duration=1.893s | loss=2.6001
+[17:32:34.900][BACKWARD][START] 
+[17:32:39.614][BACKWARD][END] duration=4.714s
+[17:32:39.853][STEP][BEGIN] 
+[17:32:39.938][STEP][DONE] duration=0.084s | global_step=3
+[step 0003] loss=35.1282 lr=6.00e-07 tokens/s=560.9
+[17:32:39.938][FORWARD][START] micro_step=49
+[17:32:42.270][FORWARD][END] duration=1.893s | loss=2.3485
+[17:32:42.270][BACKWARD][START] 
+[17:32:46.988][BACKWARD][END] duration=4.718s
+[17:32:47.229][FORWARD][START] micro_step=50
+[17:32:49.558][FORWARD][END] duration=1.890s | loss=1.3023
+[17:32:49.559][BACKWARD][START] 
+[17:32:54.269][BACKWARD][END] duration=4.710s
+[17:32:54.509][FORWARD][START] micro_step=51
+[17:32:56.842][FORWARD][END] duration=1.894s | loss=2.1728
+[17:32:56.842][BACKWARD][START] 
+[17:33:01.571][BACKWARD][END] duration=4.728s
+[17:33:01.810][FORWARD][START] micro_step=52
+[17:33:04.145][FORWARD][END] duration=1.894s | loss=2.2210
+[17:33:04.145][BACKWARD][START] 
+[17:33:08.870][BACKWARD][END] duration=4.725s
+[17:33:09.110][FORWARD][START] micro_step=53
+[17:33:11.449][FORWARD][END] duration=1.900s | loss=2.2119
+[17:33:11.449][BACKWARD][START] 
+[17:33:16.175][BACKWARD][END] duration=4.727s
+[17:33:16.416][FORWARD][START] micro_step=54
+[17:33:18.750][FORWARD][END] duration=1.895s | loss=2.2403
+[17:33:18.751][BACKWARD][START] 
+[17:33:23.468][BACKWARD][END] duration=4.717s
+[17:33:23.708][FORWARD][START] micro_step=55
+[17:33:26.045][FORWARD][END] duration=1.898s | loss=2.0410
+[17:33:26.046][BACKWARD][START] 
+[17:33:30.771][BACKWARD][END] duration=4.726s
+[17:33:31.011][FORWARD][START] micro_step=56
+[17:33:33.349][FORWARD][END] duration=1.898s | loss=1.8001
+[17:33:33.349][BACKWARD][START] 
+[17:33:38.068][BACKWARD][END] duration=4.719s
+[17:33:38.308][FORWARD][START] micro_step=57
+[17:33:40.646][FORWARD][END] duration=1.899s | loss=2.0227
+[17:33:40.646][BACKWARD][START] 
+[17:33:45.373][BACKWARD][END] duration=4.727s
+[17:33:45.613][FORWARD][START] micro_step=58
+[17:33:47.948][FORWARD][END] duration=1.894s | loss=2.3552
+[17:33:47.948][BACKWARD][START] 
+[17:33:52.671][BACKWARD][END] duration=4.723s
+[17:33:52.911][FORWARD][START] micro_step=59
+[17:33:55.279][FORWARD][END] duration=1.929s | loss=2.1308
+[17:33:55.279][BACKWARD][START] 
+[17:33:59.993][BACKWARD][END] duration=4.713s
+[17:34:00.232][FORWARD][START] micro_step=60
+[17:34:02.571][FORWARD][END] duration=1.898s | loss=2.2443
+[17:34:02.571][BACKWARD][START] 
+[17:34:07.291][BACKWARD][END] duration=4.720s
+[17:34:07.531][FORWARD][START] micro_step=61
+[17:34:09.866][FORWARD][END] duration=1.895s | loss=2.6565
+[17:34:09.866][BACKWARD][START] 
+[17:34:14.589][BACKWARD][END] duration=4.723s
+[17:34:14.829][FORWARD][START] micro_step=62
+[17:34:17.163][FORWARD][END] duration=1.894s | loss=2.0042
+[17:34:17.163][BACKWARD][START] 
+[17:34:21.887][BACKWARD][END] duration=4.724s
+[17:34:22.127][FORWARD][START] micro_step=63
+[17:34:24.462][FORWARD][END] duration=1.896s | loss=1.9808
+[17:34:24.462][BACKWARD][START] 
+[17:34:29.189][BACKWARD][END] duration=4.727s
+[17:34:29.428][FORWARD][START] micro_step=64
+[17:34:31.761][FORWARD][END] duration=1.893s | loss=1.8593
+[17:34:31.761][BACKWARD][START] 
+[17:34:36.475][BACKWARD][END] duration=4.714s
+[17:34:36.715][STEP][BEGIN] 
+[17:34:36.747][STEP][DONE] duration=0.032s | global_step=4
+[17:34:36.753][CKPT][BEGIN] step=4 | path=~/llm_example/ckpts/step_000004.pt
+[17:35:42.310][CKPT][END] step=4 | duration=65.558s | saved=~/llm_example/ckpts/step_000004.pt
+[step 0004] loss=33.5919 lr=8.00e-07 tokens/s=359.3
+[17:35:42.315][FORWARD][START] micro_step=65
+[17:35:44.652][FORWARD][END] duration=1.896s | loss=2.1748
+[17:35:44.652][BACKWARD][START] 
+[17:35:49.369][BACKWARD][END] duration=4.717s
+[17:35:49.652][FORWARD][START] micro_step=66
+[17:35:51.989][FORWARD][END] duration=1.944s | loss=2.0958
+[17:35:51.989][BACKWARD][START] 
+[17:35:56.710][BACKWARD][END] duration=4.720s
+[17:35:56.950][FORWARD][START] micro_step=67
+[17:35:59.287][FORWARD][END] duration=1.898s | loss=2.1507
+[17:35:59.288][BACKWARD][START] 
+[17:36:04.013][BACKWARD][END] duration=4.726s
+[17:36:04.253][FORWARD][START] micro_step=68
+[17:36:06.589][FORWARD][END] duration=1.896s | loss=1.7769
+[17:36:06.589][BACKWARD][START] 
+[17:36:11.310][BACKWARD][END] duration=4.721s
+[17:36:11.550][FORWARD][START] micro_step=69
+[17:36:13.884][FORWARD][END] duration=1.893s | loss=2.6383
+[17:36:13.884][BACKWARD][START] 
+[17:36:18.609][BACKWARD][END] duration=4.725s
+[17:36:18.848][FORWARD][START] micro_step=70
+[17:36:21.185][FORWARD][END] duration=1.895s | loss=2.0157
+[17:36:21.186][BACKWARD][START] 
+[17:36:25.909][BACKWARD][END] duration=4.723s
+[17:36:26.149][FORWARD][START] micro_step=71
+[17:36:28.488][FORWARD][END] duration=1.899s | loss=2.3028
+[17:36:28.488][BACKWARD][START] 
+[17:36:33.210][BACKWARD][END] duration=4.722s
+[17:36:33.450][FORWARD][START] micro_step=72
+[17:36:35.786][FORWARD][END] duration=1.897s | loss=2.3018
+[17:36:35.786][BACKWARD][START] 
+[17:36:40.511][BACKWARD][END] duration=4.725s
+[17:36:40.751][FORWARD][START] micro_step=73
+[17:36:43.086][FORWARD][END] duration=1.893s | loss=1.8067
+[17:36:43.086][BACKWARD][START] 
+[17:36:47.811][BACKWARD][END] duration=4.725s
+[17:36:48.050][FORWARD][START] micro_step=74
+[17:36:50.387][FORWARD][END] duration=1.896s | loss=2.0903
+[17:36:50.387][BACKWARD][START] 
+[17:36:55.111][BACKWARD][END] duration=4.724s
+[17:36:55.351][FORWARD][START] micro_step=75
+[17:36:57.692][FORWARD][END] duration=1.900s | loss=2.2072
+[17:36:57.692][BACKWARD][START] 
+[17:37:02.415][BACKWARD][END] duration=4.723s
+[17:37:02.655][FORWARD][START] micro_step=76
+[17:37:04.994][FORWARD][END] duration=1.899s | loss=2.7473
+[17:37:04.994][BACKWARD][START] 
+[17:37:09.715][BACKWARD][END] duration=4.721s
+[17:37:09.956][FORWARD][START] micro_step=77
+[17:37:12.287][FORWARD][END] duration=1.893s | loss=1.9484
+[17:37:12.287][BACKWARD][START] 
+[17:37:17.011][BACKWARD][END] duration=4.724s
+[17:37:17.251][FORWARD][START] micro_step=78
+[17:37:19.589][FORWARD][END] duration=1.897s | loss=2.0007
+[17:37:19.589][BACKWARD][START] 
+[17:37:24.315][BACKWARD][END] duration=4.726s
+[17:37:24.556][FORWARD][START] micro_step=79
+[17:37:26.888][FORWARD][END] duration=1.892s | loss=1.7764
+[17:37:26.889][BACKWARD][START] 
+[17:37:31.608][BACKWARD][END] duration=4.720s
+[17:37:31.848][FORWARD][START] micro_step=80
+[17:37:34.179][FORWARD][END] duration=1.893s | loss=1.5179
+[17:37:34.179][BACKWARD][START] 
+[17:37:38.888][BACKWARD][END] duration=4.709s
+[17:37:39.127][STEP][BEGIN] 
+[17:37:39.156][STEP][DONE] duration=0.029s | global_step=5
+[step 0005] loss=33.5518 lr=1.00e-06 tokens/s=560.9
+[17:37:39.157][FORWARD][START] micro_step=81
+[17:37:41.491][FORWARD][END] duration=1.895s | loss=2.2446
+[17:37:41.492][BACKWARD][START] 
+[17:37:46.206][BACKWARD][END] duration=4.715s
+[17:37:46.447][FORWARD][START] micro_step=82
+[17:37:48.783][FORWARD][END] duration=1.896s | loss=3.4199
+[17:37:48.783][BACKWARD][START] 
+[17:37:53.510][BACKWARD][END] duration=4.727s
+[17:37:53.749][FORWARD][START] micro_step=83
+[17:37:56.087][FORWARD][END] duration=1.897s | loss=2.2037
+[17:37:56.087][BACKWARD][START] 
+[17:38:00.814][BACKWARD][END] duration=4.727s
+[17:38:01.054][FORWARD][START] micro_step=84
+[17:38:03.389][FORWARD][END] duration=1.895s | loss=2.0292
+[17:38:03.389][BACKWARD][START] 
+[17:38:08.110][BACKWARD][END] duration=4.721s
+[17:38:08.349][FORWARD][START] micro_step=85
+[17:38:10.689][FORWARD][END] duration=1.899s | loss=1.8196
+[17:38:10.689][BACKWARD][START] 
+[17:38:15.413][BACKWARD][END] duration=4.724s
+[17:38:15.654][FORWARD][START] micro_step=86
+[17:38:17.991][FORWARD][END] duration=1.899s | loss=2.3779
+[17:38:17.991][BACKWARD][START] 
+[17:38:22.715][BACKWARD][END] duration=4.724s
+[17:38:22.954][FORWARD][START] micro_step=87
+[17:38:25.289][FORWARD][END] duration=1.895s | loss=1.6531
+[17:38:25.289][BACKWARD][START] 
+[17:38:30.013][BACKWARD][END] duration=4.724s
+[17:38:30.253][FORWARD][START] micro_step=88
+[17:38:32.588][FORWARD][END] duration=1.896s | loss=2.1234
+[17:38:32.588][BACKWARD][START] 
+[17:38:37.307][BACKWARD][END] duration=4.719s
+[17:38:37.547][FORWARD][START] micro_step=89
+[17:38:39.884][FORWARD][END] duration=1.897s | loss=1.8285
+[17:38:39.884][BACKWARD][START] 
+[17:38:44.613][BACKWARD][END] duration=4.729s
+[17:38:44.853][FORWARD][START] micro_step=90
+[17:38:47.188][FORWARD][END] duration=1.896s | loss=2.3960
+[17:38:47.188][BACKWARD][START] 
+[17:38:51.910][BACKWARD][END] duration=4.722s
+[17:38:52.150][FORWARD][START] micro_step=91
+[17:38:54.484][FORWARD][END] duration=1.895s | loss=2.3446
+[17:38:54.484][BACKWARD][START] 
+[17:38:59.210][BACKWARD][END] duration=4.725s
+[17:38:59.449][FORWARD][START] micro_step=92
+[17:39:01.788][FORWARD][END] duration=1.899s | loss=3.3888
+[17:39:01.788][BACKWARD][START] 
+[17:39:06.514][BACKWARD][END] duration=4.727s
+[17:39:06.755][FORWARD][START] micro_step=93
+[17:39:09.088][FORWARD][END] duration=1.894s | loss=1.9885
+[17:39:09.089][BACKWARD][START] 
+[17:39:13.813][BACKWARD][END] duration=4.724s
+[17:39:14.053][FORWARD][START] micro_step=94
+[17:39:16.389][FORWARD][END] duration=1.896s | loss=2.0552
+[17:39:16.389][BACKWARD][START] 
+[17:39:21.107][BACKWARD][END] duration=4.718s
+[17:39:21.347][FORWARD][START] micro_step=95
+[17:39:23.685][FORWARD][END] duration=1.898s | loss=1.8404
+[17:39:23.686][BACKWARD][START] 
+[17:39:28.412][BACKWARD][END] duration=4.727s
+[17:39:28.652][FORWARD][START] micro_step=96
+[17:39:30.988][FORWARD][END] duration=1.896s | loss=1.7517
+[17:39:30.988][BACKWARD][START] 
+[17:39:35.710][BACKWARD][END] duration=4.722s
+[17:39:35.949][STEP][BEGIN] 
+[17:39:35.976][STEP][DONE] duration=0.027s | global_step=6
+[step 0006] loss=35.4652 lr=1.20e-06 tokens/s=561.0
+[17:39:35.976][FORWARD][START] micro_step=97
+[17:39:38.307][FORWARD][END] duration=1.892s | loss=1.8259
+[17:39:38.307][BACKWARD][START] 
+[17:39:43.029][BACKWARD][END] duration=4.722s
+[17:39:43.269][FORWARD][START] micro_step=98
+[17:39:45.597][FORWARD][END] duration=1.889s | loss=1.4943
+[17:39:45.597][BACKWARD][START] 
+[17:39:50.306][BACKWARD][END] duration=4.708s
+[17:39:50.545][FORWARD][START] micro_step=99
+[17:39:52.883][FORWARD][END] duration=1.896s | loss=1.8435
+[17:39:52.883][BACKWARD][START] 
+[17:39:57.611][BACKWARD][END] duration=4.728s
+[17:39:57.851][FORWARD][START] micro_step=100
+[17:40:00.183][FORWARD][END] duration=1.892s | loss=2.3764
+[17:40:00.183][BACKWARD][START] 
+[17:40:04.906][BACKWARD][END] duration=4.723s
+[17:40:05.146][FORWARD][START] micro_step=101
+[17:40:07.481][FORWARD][END] duration=1.895s | loss=1.8058
+[17:40:07.481][BACKWARD][START] 
+[17:40:12.207][BACKWARD][END] duration=4.725s
+[17:40:12.446][FORWARD][START] micro_step=102
+[17:40:14.782][FORWARD][END] duration=1.895s | loss=1.4768
+[17:40:14.782][BACKWARD][START] 
+[17:40:19.493][BACKWARD][END] duration=4.711s
+[17:40:19.733][FORWARD][START] micro_step=103
+[17:40:22.071][FORWARD][END] duration=1.898s | loss=2.7407
+[17:40:22.071][BACKWARD][START] 
+[17:40:26.794][BACKWARD][END] duration=4.724s
+[17:40:27.035][FORWARD][START] micro_step=104
+[17:40:29.369][FORWARD][END] duration=1.895s | loss=2.3825
+[17:40:29.369][BACKWARD][START] 
+[17:40:34.093][BACKWARD][END] duration=4.724s
+[17:40:34.333][FORWARD][START] micro_step=105
+[17:40:36.667][FORWARD][END] duration=1.894s | loss=1.9028
+[17:40:36.667][BACKWARD][START] 
+[17:40:41.390][BACKWARD][END] duration=4.722s
+[17:40:41.629][FORWARD][START] micro_step=106
+[17:40:43.965][FORWARD][END] duration=1.896s | loss=2.1788
+[17:40:43.965][BACKWARD][START] 
+[17:40:48.687][BACKWARD][END] duration=4.722s
+[17:40:48.927][FORWARD][START] micro_step=107
+[17:40:51.262][FORWARD][END] duration=1.895s | loss=2.6032
+[17:40:51.262][BACKWARD][START] 
+[17:40:55.985][BACKWARD][END] duration=4.723s
+[17:40:56.225][FORWARD][START] micro_step=108
+[17:40:58.559][FORWARD][END] duration=1.894s | loss=2.3998
+[17:40:58.559][BACKWARD][START] 
+[17:41:03.272][BACKWARD][END] duration=4.713s
+[17:41:03.512][FORWARD][START] micro_step=109
+[17:41:05.843][FORWARD][END] duration=1.893s | loss=1.9770
+[17:41:05.843][BACKWARD][START] 
+[17:41:10.572][BACKWARD][END] duration=4.729s
+[17:41:10.812][FORWARD][START] micro_step=110
+[17:41:13.145][FORWARD][END] duration=1.894s | loss=1.9575
+[17:41:13.145][BACKWARD][START] 
+[17:41:17.867][BACKWARD][END] duration=4.722s
+[17:41:18.107][FORWARD][START] micro_step=111
+[17:41:20.439][FORWARD][END] duration=1.893s | loss=1.7968
+[17:41:20.439][BACKWARD][START] 
+[17:41:25.148][BACKWARD][END] duration=4.709s
+[17:41:25.388][FORWARD][START] micro_step=112
+[17:41:27.721][FORWARD][END] duration=1.893s | loss=2.2849
+[17:41:27.722][BACKWARD][START] 
+[17:41:32.435][BACKWARD][END] duration=4.713s
+[17:41:32.675][STEP][BEGIN] 
+[17:41:32.703][STEP][DONE] duration=0.028s | global_step=7
+[step 0007] loss=33.0467 lr=1.40e-06 tokens/s=561.4
+[17:41:32.703][FORWARD][START] micro_step=113
+[17:41:35.037][FORWARD][END] duration=1.895s | loss=1.8948
+[17:41:35.037][BACKWARD][START] 
+[17:41:39.748][BACKWARD][END] duration=4.711s
+[17:41:39.990][FORWARD][START] micro_step=114
+[17:41:42.322][FORWARD][END] duration=1.893s | loss=1.5505
+[17:41:42.322][BACKWARD][START] 
+[17:41:47.034][BACKWARD][END] duration=4.712s
+[17:41:47.274][FORWARD][START] micro_step=115
+[17:41:49.608][FORWARD][END] duration=1.894s | loss=2.5078
+[17:41:49.608][BACKWARD][START] 
+[17:41:54.328][BACKWARD][END] duration=4.719s
+[17:41:54.567][FORWARD][START] micro_step=116
+[17:41:56.903][FORWARD][END] duration=1.896s | loss=2.4143
+[17:41:56.903][BACKWARD][START] 
+[17:42:01.630][BACKWARD][END] duration=4.726s
+[17:42:01.870][FORWARD][START] micro_step=117
+[17:42:04.202][FORWARD][END] duration=1.892s | loss=2.3312
+[17:42:04.202][BACKWARD][START] 
+[17:42:08.915][BACKWARD][END] duration=4.713s
+[17:42:09.155][FORWARD][START] micro_step=118
+[17:42:11.489][FORWARD][END] duration=1.894s | loss=2.2164
+[17:42:11.489][BACKWARD][START] 
+[17:42:16.209][BACKWARD][END] duration=4.720s
+[17:42:16.449][FORWARD][START] micro_step=119
+[17:42:18.783][FORWARD][END] duration=1.897s | loss=2.4120
+[17:42:18.783][BACKWARD][START] 
+[17:42:23.496][BACKWARD][END] duration=4.713s
+[17:42:23.736][FORWARD][START] micro_step=120
+[17:42:26.072][FORWARD][END] duration=1.897s | loss=2.2665
+[17:42:26.072][BACKWARD][START] 
+[17:42:30.790][BACKWARD][END] duration=4.717s
+[17:42:31.029][FORWARD][START] micro_step=121
+[17:42:33.363][FORWARD][END] duration=1.894s | loss=1.6865
+[17:42:33.363][BACKWARD][START] 
+[17:42:38.092][BACKWARD][END] duration=4.728s
+[17:42:38.332][FORWARD][START] micro_step=122
+[17:42:40.667][FORWARD][END] duration=1.895s | loss=1.7268
+[17:42:40.668][BACKWARD][START] 
+[17:42:45.392][BACKWARD][END] duration=4.725s
+[17:42:45.632][FORWARD][START] micro_step=123
+[17:42:47.968][FORWARD][END] duration=1.896s | loss=2.1714
+[17:42:47.968][BACKWARD][START] 
+[17:42:52.690][BACKWARD][END] duration=4.722s
+[17:42:52.930][FORWARD][START] micro_step=124
+[17:42:55.263][FORWARD][END] duration=1.893s | loss=1.5997
+[17:42:55.263][BACKWARD][START] 
+[17:42:59.983][BACKWARD][END] duration=4.720s
+[17:43:00.224][FORWARD][START] micro_step=125
+[17:43:02.561][FORWARD][END] duration=1.898s | loss=2.9629
+[17:43:02.561][BACKWARD][START] 
+[17:43:07.289][BACKWARD][END] duration=4.727s
+[17:43:07.528][FORWARD][START] micro_step=126
+[17:43:09.863][FORWARD][END] duration=1.895s | loss=2.0387
+[17:43:09.864][BACKWARD][START] 
+[17:43:14.589][BACKWARD][END] duration=4.725s
+[17:43:14.829][FORWARD][START] micro_step=127
+[17:43:17.159][FORWARD][END] duration=1.891s | loss=1.4907
+[17:43:17.159][BACKWARD][START] 
+[17:43:21.867][BACKWARD][END] duration=4.708s
+[17:43:22.107][FORWARD][START] micro_step=128
+[17:43:24.443][FORWARD][END] duration=1.897s | loss=2.1317
+[17:43:24.443][BACKWARD][START] 
+[17:43:29.168][BACKWARD][END] duration=4.725s
+[17:43:29.407][STEP][BEGIN] 
+[17:43:29.432][STEP][DONE] duration=0.025s | global_step=8
+[17:43:29.433][CKPT][BEGIN] step=8 | path=~/llm_example/ckpts/step_000008.pt
+[17:44:29.378][CKPT][END] step=8 | duration=59.944s | saved=~/llm_example/ckpts/step_000008.pt
+[step 0008] loss=33.4017 lr=1.60e-06 tokens/s=370.9
+[17:44:29.383][FORWARD][START] micro_step=129
+[17:44:31.713][FORWARD][END] duration=1.892s | loss=2.0169
+[17:44:31.713][BACKWARD][START] 
+[17:44:36.434][BACKWARD][END] duration=4.721s
+[17:44:36.676][FORWARD][START] micro_step=130
+[17:44:39.010][FORWARD][END] duration=1.895s | loss=2.6914
+[17:44:39.010][BACKWARD][START] 
+[17:44:43.736][BACKWARD][END] duration=4.726s
+[17:44:43.977][FORWARD][START] micro_step=131
+[17:44:46.309][FORWARD][END] duration=1.893s | loss=1.7318
+[17:44:46.309][BACKWARD][START] 
+[17:44:51.027][BACKWARD][END] duration=4.718s
+[17:44:51.267][FORWARD][START] micro_step=132
+[17:44:53.601][FORWARD][END] duration=1.896s | loss=2.5501
+[17:44:53.602][BACKWARD][START] 
+[17:44:58.311][BACKWARD][END] duration=4.709s
+[17:44:58.550][FORWARD][START] micro_step=133
+[17:45:00.881][FORWARD][END] duration=1.893s | loss=1.9515
+[17:45:00.881][BACKWARD][START] 
+[17:45:05.601][BACKWARD][END] duration=4.720s
+[17:45:05.843][FORWARD][START] micro_step=134
+[17:45:08.177][FORWARD][END] duration=1.894s | loss=2.2389
+[17:45:08.177][BACKWARD][START] 
+[17:45:12.885][BACKWARD][END] duration=4.708s
+[17:45:13.124][FORWARD][START] micro_step=135
+[17:45:15.455][FORWARD][END] duration=1.892s | loss=1.7687
+[17:45:15.456][BACKWARD][START] 
+[17:45:20.168][BACKWARD][END] duration=4.713s
+[17:45:20.408][FORWARD][START] micro_step=136
+[17:45:22.742][FORWARD][END] duration=1.894s | loss=2.5287
+[17:45:22.742][BACKWARD][START] 
+[17:45:27.453][BACKWARD][END] duration=4.711s
+[17:45:27.693][FORWARD][START] micro_step=137
+[17:45:30.027][FORWARD][END] duration=1.894s | loss=2.2400
+[17:45:30.027][BACKWARD][START] 
+[17:45:34.750][BACKWARD][END] duration=4.723s
+[17:45:34.989][FORWARD][START] micro_step=138
+[17:45:37.324][FORWARD][END] duration=1.897s | loss=1.8497
+[17:45:37.324][BACKWARD][START] 
+[17:45:42.040][BACKWARD][END] duration=4.717s
+[17:45:42.282][FORWARD][START] micro_step=139
+[17:45:44.616][FORWARD][END] duration=1.894s | loss=1.3919
+[17:45:44.617][BACKWARD][START] 
+[17:45:49.330][BACKWARD][END] duration=4.713s
+[17:45:49.569][FORWARD][START] micro_step=140
+[17:45:51.905][FORWARD][END] duration=1.896s | loss=2.3116
+[17:45:51.905][BACKWARD][START] 
+[17:45:56.630][BACKWARD][END] duration=4.725s
+[17:45:56.870][FORWARD][START] micro_step=141
+[17:45:59.204][FORWARD][END] duration=1.894s | loss=2.1690
+[17:45:59.204][BACKWARD][START] 
+[17:46:03.927][BACKWARD][END] duration=4.723s
+[17:46:04.167][FORWARD][START] micro_step=142
+[17:46:06.502][FORWARD][END] duration=1.896s | loss=2.1405
+[17:46:06.502][BACKWARD][START] 
+[17:46:11.227][BACKWARD][END] duration=4.724s
+[17:46:11.466][FORWARD][START] micro_step=143
+[17:46:13.799][FORWARD][END] duration=1.894s | loss=1.6699
+[17:46:13.800][BACKWARD][START] 
+[17:46:18.508][BACKWARD][END] duration=4.709s
+[17:46:18.748][FORWARD][START] micro_step=144
+[17:46:21.084][FORWARD][END] duration=1.897s | loss=2.0887
+[17:46:21.084][BACKWARD][START] 
+[17:46:25.810][BACKWARD][END] duration=4.725s
+[17:46:26.049][STEP][BEGIN] 
+[17:46:26.067][STEP][DONE] duration=0.018s | global_step=9
+[step 0009] loss=33.3392 lr=1.80e-06 tokens/s=561.7
+[17:46:26.067][FORWARD][START] micro_step=145
+[17:46:28.401][FORWARD][END] duration=1.894s | loss=1.6225
+[17:46:28.402][BACKWARD][START] 
+[17:46:33.111][BACKWARD][END] duration=4.710s
+[17:46:33.352][FORWARD][START] micro_step=146
+[17:46:35.687][FORWARD][END] duration=1.896s | loss=1.5238
+[17:46:35.688][BACKWARD][START] 
+[17:46:40.410][BACKWARD][END] duration=4.722s
+[17:46:40.649][FORWARD][START] micro_step=147
+[17:46:42.984][FORWARD][END] duration=1.895s | loss=2.3531
+[17:46:42.984][BACKWARD][START] 
+[17:46:47.707][BACKWARD][END] duration=4.723s
+[17:46:47.947][FORWARD][START] micro_step=148
+[17:46:50.285][FORWARD][END] duration=1.898s | loss=2.0273
+[17:46:50.285][BACKWARD][START] 
+[17:46:55.008][BACKWARD][END] duration=4.723s
+[17:46:55.248][FORWARD][START] micro_step=149
+[17:46:57.584][FORWARD][END] duration=1.894s | loss=1.8434
+[17:46:57.584][BACKWARD][START] 
+[17:47:02.314][BACKWARD][END] duration=4.731s
+[17:47:02.555][FORWARD][START] micro_step=150
+[17:47:04.892][FORWARD][END] duration=1.898s | loss=2.5572
+[17:47:04.892][BACKWARD][START] 
+[17:47:09.617][BACKWARD][END] duration=4.725s
+[17:47:09.858][FORWARD][START] micro_step=151
+[17:47:12.191][FORWARD][END] duration=1.894s | loss=1.9303
+[17:47:12.191][BACKWARD][START] 
+[17:47:16.912][BACKWARD][END] duration=4.721s
+[17:47:17.151][FORWARD][START] micro_step=152
+[17:47:19.489][FORWARD][END] duration=1.897s | loss=2.3617
+[17:47:19.489][BACKWARD][START] 
+[17:47:24.211][BACKWARD][END] duration=4.722s
+[17:47:24.450][FORWARD][START] micro_step=153
+[17:47:26.787][FORWARD][END] duration=1.896s | loss=3.0666
+[17:47:26.787][BACKWARD][START] 
+[17:47:31.513][BACKWARD][END] duration=4.726s
+[17:47:31.753][FORWARD][START] micro_step=154
+[17:47:34.087][FORWARD][END] duration=1.894s | loss=1.6998
+[17:47:34.087][BACKWARD][START] 
+[17:47:38.806][BACKWARD][END] duration=4.719s
+[17:47:39.046][FORWARD][START] micro_step=155
+[17:47:41.383][FORWARD][END] duration=1.897s | loss=2.8710
+[17:47:41.383][BACKWARD][START] 
+[17:47:46.096][BACKWARD][END] duration=4.712s
+[17:47:46.336][FORWARD][START] micro_step=156
+[17:47:48.675][FORWARD][END] duration=1.898s | loss=3.1509
+[17:47:48.675][BACKWARD][START] 
+[17:47:53.394][BACKWARD][END] duration=4.719s
+[17:47:53.635][FORWARD][START] micro_step=157
+[17:47:55.967][FORWARD][END] duration=1.894s | loss=1.4923
+[17:47:55.968][BACKWARD][START] 
+[17:48:00.686][BACKWARD][END] duration=4.718s
+[17:48:00.926][FORWARD][START] micro_step=158
+[17:48:03.263][FORWARD][END] duration=1.897s | loss=2.4080
+[17:48:03.263][BACKWARD][START] 
+[17:48:07.976][BACKWARD][END] duration=4.713s
+[17:48:08.217][FORWARD][START] micro_step=159
+[17:48:10.552][FORWARD][END] duration=1.896s | loss=2.2403
+[17:48:10.552][BACKWARD][START] 
+[17:48:15.270][BACKWARD][END] duration=4.718s
+[17:48:15.510][FORWARD][START] micro_step=160
+[17:48:17.846][FORWARD][END] duration=1.897s | loss=2.4549
+[17:48:17.846][BACKWARD][START] 
+[17:48:22.574][BACKWARD][END] duration=4.728s
+[17:48:22.814][STEP][BEGIN] 
+[17:48:22.831][STEP][DONE] duration=0.017s | global_step=10
+[step 0010] loss=35.6031 lr=2.00e-06 tokens/s=561.3
+[17:48:22.832][FORWARD][START] micro_step=161
+[17:48:25.167][FORWARD][END] duration=1.895s | loss=2.1383
+[17:48:25.167][BACKWARD][START] 
+[17:48:29.890][BACKWARD][END] duration=4.723s
+[17:48:30.130][FORWARD][START] micro_step=162
+[17:48:32.464][FORWARD][END] duration=1.894s | loss=2.2492
+[17:48:32.464][BACKWARD][START] 
+[17:48:37.173][BACKWARD][END] duration=4.710s
+[17:48:37.413][FORWARD][START] micro_step=163
+[17:48:39.747][FORWARD][END] duration=1.894s | loss=1.8023
+[17:48:39.747][BACKWARD][START] 
+[17:48:44.467][BACKWARD][END] duration=4.720s
+[17:48:44.707][FORWARD][START] micro_step=164
+[17:48:47.041][FORWARD][END] duration=1.895s | loss=2.0342
+[17:48:47.042][BACKWARD][START] 
+[17:48:51.769][BACKWARD][END] duration=4.727s
+[17:48:52.009][FORWARD][START] micro_step=165
+[17:48:54.346][FORWARD][END] duration=1.898s | loss=2.3532
+[17:48:54.346][BACKWARD][START] 
+[17:48:59.070][BACKWARD][END] duration=4.724s
+[17:48:59.310][FORWARD][START] micro_step=166
+[17:49:01.644][FORWARD][END] duration=1.896s | loss=2.4674
+[17:49:01.645][BACKWARD][START] 
+[17:49:06.361][BACKWARD][END] duration=4.717s
+[17:49:06.603][FORWARD][START] micro_step=167
+[17:49:08.937][FORWARD][END] duration=1.895s | loss=1.7718
+[17:49:08.937][BACKWARD][START] 
+[17:49:13.653][BACKWARD][END] duration=4.716s
+[17:49:13.893][FORWARD][START] micro_step=168
+[17:49:16.229][FORWARD][END] duration=1.896s | loss=2.7368
+[17:49:16.229][BACKWARD][START] 
+[17:49:20.953][BACKWARD][END] duration=4.724s
+[17:49:21.193][FORWARD][START] micro_step=169
+[17:49:23.528][FORWARD][END] duration=1.895s | loss=2.4946
+[17:49:23.528][BACKWARD][START] 
+[17:49:28.251][BACKWARD][END] duration=4.723s
+[17:49:28.491][FORWARD][START] micro_step=170
+[17:49:30.826][FORWARD][END] duration=1.896s | loss=2.7311
+[17:49:30.826][BACKWARD][START] 
+[17:49:35.550][BACKWARD][END] duration=4.723s
+[17:49:35.789][FORWARD][START] micro_step=171
+[17:49:38.125][FORWARD][END] duration=1.896s | loss=2.3967
+[17:49:38.125][BACKWARD][START] 
+[17:49:42.836][BACKWARD][END] duration=4.711s
+[17:49:43.077][FORWARD][START] micro_step=172
+[17:49:45.410][FORWARD][END] duration=1.895s | loss=2.0948
+[17:49:45.410][BACKWARD][START] 
+[17:49:50.132][BACKWARD][END] duration=4.722s
+[17:49:50.372][FORWARD][START] micro_step=173
+[17:49:52.706][FORWARD][END] duration=1.894s | loss=2.0929
+[17:49:52.706][BACKWARD][START] 
+[17:49:57.434][BACKWARD][END] duration=4.728s
+[17:49:57.674][FORWARD][START] micro_step=174
+[17:50:00.009][FORWARD][END] duration=1.896s | loss=1.7247
+[17:50:00.009][BACKWARD][START] 
+[17:50:04.734][BACKWARD][END] duration=4.725s
+[17:50:04.973][FORWARD][START] micro_step=175
+[17:50:07.306][FORWARD][END] duration=1.894s | loss=2.1198
+[17:50:07.307][BACKWARD][START] 
+[17:50:12.026][BACKWARD][END] duration=4.720s
+[17:50:12.266][FORWARD][START] micro_step=176
+[17:50:14.600][FORWARD][END] duration=1.894s | loss=2.5222
+[17:50:14.600][BACKWARD][START] 
+[17:50:19.315][BACKWARD][END] duration=4.715s
+[17:50:19.555][STEP][BEGIN] 
+[17:50:19.575][STEP][DONE] duration=0.020s | global_step=11
+[step 0011] loss=35.7301 lr=2.20e-06 tokens/s=561.4
+[17:50:19.575][FORWARD][START] micro_step=177
+[17:50:21.905][FORWARD][END] duration=1.891s | loss=2.1131
+[17:50:21.905][BACKWARD][START] 
+[17:50:26.622][BACKWARD][END] duration=4.718s
+[17:50:26.864][FORWARD][START] micro_step=178
+[17:50:29.200][FORWARD][END] duration=1.896s | loss=2.1540
+[17:50:29.200][BACKWARD][START] 
+[17:50:33.919][BACKWARD][END] duration=4.719s
+[17:50:34.160][FORWARD][START] micro_step=179
+[17:50:36.495][FORWARD][END] duration=1.896s | loss=2.6088
+[17:50:36.495][BACKWARD][START] 
+[17:50:41.211][BACKWARD][END] duration=4.716s
+[17:50:41.451][FORWARD][START] micro_step=180
+[17:50:43.788][FORWARD][END] duration=1.897s | loss=1.9127
+[17:50:43.788][BACKWARD][START] 
+[17:50:48.515][BACKWARD][END] duration=4.727s
+[17:50:48.755][FORWARD][START] micro_step=181
+[17:50:51.090][FORWARD][END] duration=1.895s | loss=1.8030
+[17:50:51.090][BACKWARD][START] 
+[17:50:55.817][BACKWARD][END] duration=4.727s
+[17:50:56.058][FORWARD][START] micro_step=182
+[17:50:58.390][FORWARD][END] duration=1.892s | loss=1.9872
+[17:50:58.390][BACKWARD][START] 
+[17:51:03.108][BACKWARD][END] duration=4.718s
+[17:51:03.348][FORWARD][START] micro_step=183
+[17:51:05.684][FORWARD][END] duration=1.894s | loss=2.4262
+[17:51:05.684][BACKWARD][START] 
+[17:51:10.415][BACKWARD][END] duration=4.731s
+[17:51:10.655][FORWARD][START] micro_step=184
+[17:51:12.989][FORWARD][END] duration=1.894s | loss=1.9345
+[17:51:12.989][BACKWARD][START] 
+[17:51:17.712][BACKWARD][END] duration=4.724s
+[17:51:17.952][FORWARD][START] micro_step=185
+[17:51:20.285][FORWARD][END] duration=1.893s | loss=2.0389
+[17:51:20.285][BACKWARD][START] 
+[17:51:25.010][BACKWARD][END] duration=4.725s
+[17:51:25.250][FORWARD][START] micro_step=186
+[17:51:27.586][FORWARD][END] duration=1.897s | loss=2.9557
+[17:51:27.587][BACKWARD][START] 
+[17:51:32.315][BACKWARD][END] duration=4.728s
+[17:51:32.556][FORWARD][START] micro_step=187
+[17:51:34.893][FORWARD][END] duration=1.897s | loss=2.4218
+[17:51:34.893][BACKWARD][START] 
+[17:51:39.613][BACKWARD][END] duration=4.721s
+[17:51:39.854][FORWARD][START] micro_step=188
+[17:51:42.184][FORWARD][END] duration=1.891s | loss=1.2722
+[17:51:42.184][BACKWARD][START] 
+[17:51:46.895][BACKWARD][END] duration=4.712s
+[17:51:47.135][FORWARD][START] micro_step=189
+[17:51:49.473][FORWARD][END] duration=1.897s | loss=2.3856
+[17:51:49.473][BACKWARD][START] 
+[17:51:54.197][BACKWARD][END] duration=4.724s
+[17:51:54.438][FORWARD][START] micro_step=190
+[17:51:56.774][FORWARD][END] duration=1.896s | loss=3.3537
+[17:51:56.774][BACKWARD][START] 
+[17:52:01.493][BACKWARD][END] duration=4.719s
+[17:52:01.733][FORWARD][START] micro_step=191
+[17:52:04.064][FORWARD][END] duration=1.893s | loss=2.1211
+[17:52:04.064][BACKWARD][START] 
+[17:52:08.778][BACKWARD][END] duration=4.714s
+[17:52:09.019][FORWARD][START] micro_step=192
+[17:52:11.356][FORWARD][END] duration=1.897s | loss=2.2311
+[17:52:11.356][BACKWARD][START] 
+[17:52:16.075][BACKWARD][END] duration=4.719s
+[17:52:16.314][STEP][BEGIN] 
+[17:52:16.347][STEP][DONE] duration=0.033s | global_step=12
+[17:52:16.350][CKPT][BEGIN] step=12 | path=~/llm_example/ckpts/step_000012.pt
+[17:53:16.210][CKPT][END] step=12 | duration=59.860s | saved=~/llm_example/ckpts/step_000012.pt
+[step 0012] loss=35.7196 lr=2.40e-06 tokens/s=371.0
+[17:53:16.214][FORWARD][START] micro_step=193
+[17:53:18.551][FORWARD][END] duration=1.897s | loss=2.1852
+[17:53:18.551][BACKWARD][START] 
+[17:53:23.272][BACKWARD][END] duration=4.721s
+[17:53:23.513][FORWARD][START] micro_step=194
+[17:53:25.847][FORWARD][END] duration=1.895s | loss=2.0759
+[17:53:25.847][BACKWARD][START] 
+[17:53:30.566][BACKWARD][END] duration=4.718s
+[17:53:30.806][FORWARD][START] micro_step=195
+[17:53:33.137][FORWARD][END] duration=1.893s | loss=1.7456
+[17:53:33.137][BACKWARD][START] 
+[17:53:37.847][BACKWARD][END] duration=4.710s
+[17:53:38.087][FORWARD][START] micro_step=196
+[17:53:40.426][FORWARD][END] duration=1.899s | loss=2.1651
+[17:53:40.426][BACKWARD][START] 
+[17:53:45.143][BACKWARD][END] duration=4.716s
+[17:53:45.385][FORWARD][START] micro_step=197
+[17:53:47.719][FORWARD][END] duration=1.895s | loss=2.4314
+[17:53:47.719][BACKWARD][START] 
+[17:53:52.428][BACKWARD][END] duration=4.709s
+[17:53:52.668][FORWARD][START] micro_step=198
+[17:53:55.003][FORWARD][END] duration=1.895s | loss=2.2755
+[17:53:55.003][BACKWARD][START] 
+[17:53:59.725][BACKWARD][END] duration=4.722s
+[17:53:59.965][FORWARD][START] micro_step=199
+[17:54:02.303][FORWARD][END] duration=1.898s | loss=3.3997
+[17:54:02.304][BACKWARD][START] 
+[17:54:07.030][BACKWARD][END] duration=4.726s
+[17:54:07.269][FORWARD][START] micro_step=200
+[17:54:09.608][FORWARD][END] duration=1.898s | loss=2.0080
+[17:54:09.608][BACKWARD][START] 
+[17:54:14.332][BACKWARD][END] duration=4.724s
+[17:54:14.572][FORWARD][START] micro_step=201
+[17:54:16.910][FORWARD][END] duration=1.899s | loss=2.2189
+[17:54:16.910][BACKWARD][START] 
+[17:54:21.637][BACKWARD][END] duration=4.727s
+[17:54:21.878][FORWARD][START] micro_step=202
+[17:54:24.213][FORWARD][END] duration=1.894s | loss=2.3235
+[17:54:24.213][BACKWARD][START] 
+[17:54:28.932][BACKWARD][END] duration=4.718s
+[17:54:29.171][FORWARD][START] micro_step=203
+[17:54:31.506][FORWARD][END] duration=1.894s | loss=2.3607
+[17:54:31.506][BACKWARD][START] 
+[17:54:36.226][BACKWARD][END] duration=4.720s
+[17:54:36.466][FORWARD][START] micro_step=204
+[17:54:38.802][FORWARD][END] duration=1.895s | loss=2.4489
+[17:54:38.802][BACKWARD][START] 
+[17:54:43.515][BACKWARD][END] duration=4.713s
+[17:54:43.756][FORWARD][START] micro_step=205
+[17:54:46.091][FORWARD][END] duration=1.896s | loss=2.5402
+[17:54:46.091][BACKWARD][START] 
+[17:54:50.811][BACKWARD][END] duration=4.721s
+[17:54:51.051][FORWARD][START] micro_step=206
+[17:54:53.387][FORWARD][END] duration=1.895s | loss=1.9703
+[17:54:53.387][BACKWARD][START] 
+[17:54:58.110][BACKWARD][END] duration=4.723s
+[17:54:58.350][FORWARD][START] micro_step=207
+[17:55:00.683][FORWARD][END] duration=1.893s | loss=2.2402
+[17:55:00.683][BACKWARD][START] 
+[17:55:05.402][BACKWARD][END] duration=4.718s
+[17:55:05.644][FORWARD][START] micro_step=208
+[17:55:07.981][FORWARD][END] duration=1.896s | loss=2.1004
+[17:55:07.981][BACKWARD][START] 
+[17:55:12.690][BACKWARD][END] duration=4.709s
+[17:55:12.929][STEP][BEGIN] 
+[17:55:12.948][STEP][DONE] duration=0.018s | global_step=13
+[step 0013] loss=36.4895 lr=2.60e-06 tokens/s=561.4
+[17:55:12.948][FORWARD][START] micro_step=209
+[17:55:15.284][FORWARD][END] duration=1.896s | loss=2.3373
+[17:55:15.284][BACKWARD][START] 
+[17:55:20.007][BACKWARD][END] duration=4.723s
+[17:55:20.248][FORWARD][START] micro_step=210
+[17:55:22.586][FORWARD][END] duration=1.898s | loss=2.0009
+[17:55:22.587][BACKWARD][START] 
+[17:55:27.313][BACKWARD][END] duration=4.726s
+[17:55:27.553][FORWARD][START] micro_step=211
+[17:55:29.888][FORWARD][END] duration=1.896s | loss=2.0488
+[17:55:29.888][BACKWARD][START] 
+[17:55:34.612][BACKWARD][END] duration=4.724s
+[17:55:34.851][FORWARD][START] micro_step=212
+[17:55:37.192][FORWARD][END] duration=1.901s | loss=2.8427
+[17:55:37.192][BACKWARD][START] 
+[17:55:41.916][BACKWARD][END] duration=4.724s
+[17:55:42.157][FORWARD][START] micro_step=213
+[17:55:44.493][FORWARD][END] duration=1.896s | loss=2.9019
+[17:55:44.493][BACKWARD][START] 
+[17:55:49.217][BACKWARD][END] duration=4.724s
+[17:55:49.458][FORWARD][START] micro_step=214
+[17:55:51.791][FORWARD][END] duration=1.893s | loss=2.1277
+[17:55:51.791][BACKWARD][START] 
+[17:55:56.508][BACKWARD][END] duration=4.717s
+[17:55:56.748][FORWARD][START] micro_step=215
+[17:55:59.083][FORWARD][END] duration=1.896s | loss=1.3799
+[17:55:59.084][BACKWARD][START] 
+[17:56:03.795][BACKWARD][END] duration=4.712s
+[17:56:04.036][FORWARD][START] micro_step=216
+[17:56:06.369][FORWARD][END] duration=1.894s | loss=1.7303
+[17:56:06.369][BACKWARD][START] 
+[17:56:11.086][BACKWARD][END] duration=4.717s
+[17:56:11.326][FORWARD][START] micro_step=217
+[17:56:13.664][FORWARD][END] duration=1.898s | loss=2.2535
+[17:56:13.664][BACKWARD][START] 
+[17:56:18.388][BACKWARD][END] duration=4.723s
+[17:56:18.627][FORWARD][START] micro_step=218
+[17:56:20.963][FORWARD][END] duration=1.895s | loss=2.1630
+[17:56:20.963][BACKWARD][START] 
+[17:56:25.690][BACKWARD][END] duration=4.727s
+[17:56:25.930][FORWARD][START] micro_step=219
+[17:56:28.260][FORWARD][END] duration=1.891s | loss=1.7127
+[17:56:28.260][BACKWARD][START] 
+[17:56:32.967][BACKWARD][END] duration=4.707s
+[17:56:33.207][FORWARD][START] micro_step=220
+[17:56:35.540][FORWARD][END] duration=1.894s | loss=2.0844
+[17:56:35.540][BACKWARD][START] 
+[17:56:40.251][BACKWARD][END] duration=4.711s
+[17:56:40.491][FORWARD][START] micro_step=221
+[17:56:42.830][FORWARD][END] duration=1.898s | loss=2.1903
+[17:56:42.830][BACKWARD][START] 
+[17:56:47.557][BACKWARD][END] duration=4.727s
+[17:56:47.798][FORWARD][START] micro_step=222
+[17:56:50.131][FORWARD][END] duration=1.894s | loss=2.1013
+[17:56:50.131][BACKWARD][START] 
+[17:56:54.849][BACKWARD][END] duration=4.718s
+[17:56:55.089][FORWARD][START] micro_step=223
+[17:56:57.424][FORWARD][END] duration=1.896s | loss=2.6703
+[17:56:57.424][BACKWARD][START] 
+[17:57:02.149][BACKWARD][END] duration=4.725s
+[17:57:02.389][FORWARD][START] micro_step=224
+[17:57:04.724][FORWARD][END] duration=1.895s | loss=1.4527
+[17:57:04.724][BACKWARD][START] 
+[17:57:09.447][BACKWARD][END] duration=4.722s
+[17:57:09.686][STEP][BEGIN] 
+[17:57:09.703][STEP][DONE] duration=0.017s | global_step=14
+[step 0014] loss=33.9978 lr=2.80e-06 tokens/s=561.3
+[17:57:09.704][FORWARD][START] micro_step=225
+[17:57:12.042][FORWARD][END] duration=1.897s | loss=2.1215
+[17:57:12.042][BACKWARD][START] 
+[17:57:16.756][BACKWARD][END] duration=4.714s
+[17:57:16.998][FORWARD][START] micro_step=226
+[17:57:19.334][FORWARD][END] duration=1.897s | loss=2.6158
+[17:57:19.334][BACKWARD][START] 
+[17:57:24.057][BACKWARD][END] duration=4.723s
+[17:57:24.298][FORWARD][START] micro_step=227
+[17:57:26.632][FORWARD][END] duration=1.894s | loss=1.7272
+[17:57:26.632][BACKWARD][START] 
+[17:57:31.349][BACKWARD][END] duration=4.717s
+[17:57:31.589][FORWARD][START] micro_step=228
+[17:57:33.923][FORWARD][END] duration=1.895s | loss=2.0582
+[17:57:33.923][BACKWARD][START] 
+[17:57:38.639][BACKWARD][END] duration=4.716s
+[17:57:38.881][FORWARD][START] micro_step=229
+[17:57:41.220][FORWARD][END] duration=1.898s | loss=1.7338
+[17:57:41.220][BACKWARD][START] 
+[17:57:45.936][BACKWARD][END] duration=4.717s
+[17:57:46.177][FORWARD][START] micro_step=230
+[17:57:48.515][FORWARD][END] duration=1.897s | loss=2.2399
+[17:57:48.515][BACKWARD][START] 
+[17:57:53.235][BACKWARD][END] duration=4.720s
+[17:57:53.475][FORWARD][START] micro_step=231
+[17:57:55.812][FORWARD][END] duration=1.897s | loss=2.8417
+[17:57:55.813][BACKWARD][START] 
+[17:58:00.535][BACKWARD][END] duration=4.723s
+[17:58:00.776][FORWARD][START] micro_step=232
+[17:58:03.110][FORWARD][END] duration=1.895s | loss=2.6111
+[17:58:03.110][BACKWARD][START] 
+[17:58:07.832][BACKWARD][END] duration=4.721s
+[17:58:08.071][FORWARD][START] micro_step=233
+[17:58:10.406][FORWARD][END] duration=1.897s | loss=2.8031
+[17:58:10.407][BACKWARD][START] 
+[17:58:15.126][BACKWARD][END] duration=4.719s
+[17:58:15.366][FORWARD][START] micro_step=234
+[17:58:17.699][FORWARD][END] duration=1.895s | loss=2.0318
+[17:58:17.699][BACKWARD][START] 
+[17:58:22.408][BACKWARD][END] duration=4.709s
+[17:58:22.647][FORWARD][START] micro_step=235
+[17:58:24.985][FORWARD][END] duration=1.897s | loss=2.4913
+[17:58:24.985][BACKWARD][START] 
+[17:58:29.708][BACKWARD][END] duration=4.724s
+[17:58:29.948][FORWARD][START] micro_step=236
+[17:58:32.288][FORWARD][END] duration=1.897s | loss=3.0955
+[17:58:32.288][BACKWARD][START] 
+[17:58:37.013][BACKWARD][END] duration=4.725s
+[17:58:37.253][FORWARD][START] micro_step=237
+[17:58:39.585][FORWARD][END] duration=1.893s | loss=2.3682
+[17:58:39.585][BACKWARD][START] 
+[17:58:44.306][BACKWARD][END] duration=4.721s
+[17:58:44.546][FORWARD][START] micro_step=238
+[17:58:46.880][FORWARD][END] duration=1.895s | loss=2.0575
+[17:58:46.880][BACKWARD][START] 
+[17:58:51.593][BACKWARD][END] duration=4.713s
+[17:58:51.833][FORWARD][START] micro_step=239
+[17:58:54.165][FORWARD][END] duration=1.894s | loss=2.7479
+[17:58:54.166][BACKWARD][START] 
+[17:58:58.884][BACKWARD][END] duration=4.719s
+[17:58:59.125][FORWARD][START] micro_step=240
+[17:59:01.459][FORWARD][END] duration=1.894s | loss=1.9484
+[17:59:01.459][BACKWARD][START] 
+[17:59:06.169][BACKWARD][END] duration=4.710s
+[17:59:06.408][STEP][BEGIN] 
+[17:59:06.426][STEP][DONE] duration=0.017s | global_step=15
+[step 0015] loss=37.4930 lr=3.00e-06 tokens/s=561.5
+[17:59:06.426][FORWARD][START] micro_step=241
+[17:59:08.756][FORWARD][END] duration=1.891s | loss=1.9367
+[17:59:08.757][BACKWARD][START] 
+[17:59:13.468][BACKWARD][END] duration=4.712s
+[17:59:13.709][FORWARD][START] micro_step=242
+[17:59:16.044][FORWARD][END] duration=1.895s | loss=1.6574
+[17:59:16.045][BACKWARD][START] 
+[17:59:20.766][BACKWARD][END] duration=4.722s
+[17:59:21.006][FORWARD][START] micro_step=243
+[17:59:23.340][FORWARD][END] duration=1.894s | loss=1.6918
+[17:59:23.340][BACKWARD][START] 
+[17:59:28.060][BACKWARD][END] duration=4.720s
+[17:59:28.302][FORWARD][START] micro_step=244
+[17:59:30.633][FORWARD][END] duration=1.893s | loss=1.9794
+[17:59:30.633][BACKWARD][START] 
+[17:59:35.349][BACKWARD][END] duration=4.715s
+[17:59:35.589][FORWARD][START] micro_step=245
+[17:59:37.923][FORWARD][END] duration=1.893s | loss=1.8557
+[17:59:37.923][BACKWARD][START] 
+[17:59:42.646][BACKWARD][END] duration=4.722s
+[17:59:42.885][FORWARD][START] micro_step=246
+[17:59:45.219][FORWARD][END] duration=1.895s | loss=2.0757
+[17:59:45.220][BACKWARD][START] 
+[17:59:49.937][BACKWARD][END] duration=4.717s
+[17:59:50.177][FORWARD][START] micro_step=247
+[17:59:52.512][FORWARD][END] duration=1.895s | loss=2.5825
+[17:59:52.512][BACKWARD][START] 
+[17:59:57.236][BACKWARD][END] duration=4.724s
+[17:59:57.476][FORWARD][START] micro_step=248
+[17:59:59.811][FORWARD][END] duration=1.895s | loss=1.7728
+[17:59:59.811][BACKWARD][START] 
+[18:00:04.533][BACKWARD][END] duration=4.722s
+[18:00:04.773][FORWARD][START] micro_step=249
+[18:00:07.109][FORWARD][END] duration=1.896s | loss=1.6389
+[18:00:07.109][BACKWARD][START] 
+[18:00:11.834][BACKWARD][END] duration=4.724s
+[18:00:12.074][FORWARD][START] micro_step=250
+[18:00:14.408][FORWARD][END] duration=1.895s | loss=2.2207
+[18:00:14.408][BACKWARD][START] 
+[18:00:19.125][BACKWARD][END] duration=4.717s
+[18:00:19.365][FORWARD][START] micro_step=251
+[18:00:21.697][FORWARD][END] duration=1.894s | loss=1.8763
+[18:00:21.698][BACKWARD][START] 
+[18:00:26.414][BACKWARD][END] duration=4.716s
+[18:00:26.654][FORWARD][START] micro_step=252
+[18:00:28.991][FORWARD][END] duration=1.898s | loss=2.0833
+[18:00:28.991][BACKWARD][START] 
+[18:00:33.712][BACKWARD][END] duration=4.721s
+[18:00:33.952][FORWARD][START] micro_step=253
+[18:00:36.290][FORWARD][END] duration=1.897s | loss=2.2206
+[18:00:36.290][BACKWARD][START] 
+[18:00:41.018][BACKWARD][END] duration=4.728s
+[18:00:41.259][FORWARD][START] micro_step=254
+[18:00:43.593][FORWARD][END] duration=1.895s | loss=2.0814
+[18:00:43.593][BACKWARD][START] 
+[18:00:48.313][BACKWARD][END] duration=4.720s
+[18:00:48.554][FORWARD][START] micro_step=255
+[18:00:50.892][FORWARD][END] duration=1.896s | loss=2.0653
+[18:00:50.892][BACKWARD][START] 
+[18:00:55.619][BACKWARD][END] duration=4.727s
+[18:00:55.860][FORWARD][START] micro_step=256
+[18:00:58.192][FORWARD][END] duration=1.893s | loss=1.8633
+[18:00:58.192][BACKWARD][START] 
+[18:01:02.914][BACKWARD][END] duration=4.721s
+[18:01:03.153][STEP][BEGIN] 
+[18:01:03.190][STEP][DONE] duration=0.037s | global_step=16
+[18:01:03.192][CKPT][BEGIN] step=16 | path=~/llm_example/ckpts/step_000016.pt
+[18:02:04.526][CKPT][END] step=16 | duration=61.334s | saved=~/llm_example/ckpts/step_000016.pt
+[step 0016] loss=31.6016 lr=3.20e-06 tokens/s=368.0
+[18:02:04.531][FORWARD][START] micro_step=257
+[18:02:06.863][FORWARD][END] duration=1.893s | loss=2.0802
+[18:02:06.864][BACKWARD][START] 
+[18:02:11.573][BACKWARD][END] duration=4.710s
+[18:02:11.815][FORWARD][START] micro_step=258
+[18:02:14.149][FORWARD][END] duration=1.894s | loss=2.0476
+[18:02:14.149][BACKWARD][START] 
+[18:02:18.871][BACKWARD][END] duration=4.722s
+[18:02:19.110][FORWARD][START] micro_step=259
+[18:02:21.437][FORWARD][END] duration=1.888s | loss=2.0329
+[18:02:21.437][BACKWARD][START] 
+[18:02:26.144][BACKWARD][END] duration=4.707s
+[18:02:26.414][FORWARD][START] micro_step=260
+[18:02:28.748][FORWARD][END] duration=1.895s | loss=2.4299
+[18:02:28.748][BACKWARD][START] 
+[18:02:33.470][BACKWARD][END] duration=4.722s
+[18:02:33.710][FORWARD][START] micro_step=261
+[18:02:36.039][FORWARD][END] duration=1.891s | loss=1.4684
+[18:02:36.039][BACKWARD][START] 
+[18:02:40.755][BACKWARD][END] duration=4.716s
+[18:02:40.994][FORWARD][START] micro_step=262
+[18:02:43.330][FORWARD][END] duration=1.896s | loss=1.9717
+[18:02:43.330][BACKWARD][START] 
+[18:02:48.053][BACKWARD][END] duration=4.723s
+[18:02:48.293][FORWARD][START] micro_step=263
+[18:02:50.630][FORWARD][END] duration=1.897s | loss=2.3310
+[18:02:50.630][BACKWARD][START] 
+[18:02:55.355][BACKWARD][END] duration=4.725s
+[18:02:55.596][FORWARD][START] micro_step=264
+[18:02:57.931][FORWARD][END] duration=1.896s | loss=2.7617
+[18:02:57.931][BACKWARD][START] 
+[18:03:02.657][BACKWARD][END] duration=4.725s
+[18:03:02.897][FORWARD][START] micro_step=265
+[18:03:05.228][FORWARD][END] duration=1.892s | loss=2.0796
+[18:03:05.229][BACKWARD][START] 
+[18:03:09.954][BACKWARD][END] duration=4.725s
+[18:03:10.194][FORWARD][START] micro_step=266
+[18:03:12.528][FORWARD][END] duration=1.894s | loss=2.1175
+[18:03:12.528][BACKWARD][START] 
+[18:03:17.246][BACKWARD][END] duration=4.718s
+[18:03:17.485][FORWARD][START] micro_step=267
+[18:03:19.824][FORWARD][END] duration=1.898s | loss=2.1389
+[18:03:19.824][BACKWARD][START] 
+[18:03:24.535][BACKWARD][END] duration=4.711s
+[18:03:24.775][FORWARD][START] micro_step=268
+[18:03:27.110][FORWARD][END] duration=1.895s | loss=2.0503
+[18:03:27.110][BACKWARD][START] 
+[18:03:31.834][BACKWARD][END] duration=4.724s
+[18:03:32.074][FORWARD][START] micro_step=269
+[18:03:34.412][FORWARD][END] duration=1.897s | loss=2.3480
+[18:03:34.412][BACKWARD][START] 
+[18:03:39.137][BACKWARD][END] duration=4.725s
+[18:03:39.378][FORWARD][START] micro_step=270
+[18:03:41.714][FORWARD][END] duration=1.896s | loss=2.3920
+[18:03:41.714][BACKWARD][START] 
+[18:03:46.436][BACKWARD][END] duration=4.722s
+[18:03:46.677][FORWARD][START] micro_step=271
+[18:03:49.013][FORWARD][END] duration=1.896s | loss=1.8167
+[18:03:49.013][BACKWARD][START] 
+[18:03:53.737][BACKWARD][END] duration=4.724s
+[18:03:53.978][FORWARD][START] micro_step=272
+[18:03:56.311][FORWARD][END] duration=1.894s | loss=1.7823
+[18:03:56.311][BACKWARD][START] 
+[18:04:01.032][BACKWARD][END] duration=4.720s
+[18:04:01.271][STEP][BEGIN] 
+[18:04:01.289][STEP][DONE] duration=0.018s | global_step=17
+[step 0017] loss=33.8488 lr=3.40e-06 tokens/s=561.3
+[18:04:01.290][FORWARD][START] micro_step=273
+[18:04:03.622][FORWARD][END] duration=1.893s | loss=1.8507
+[18:04:03.622][BACKWARD][START] 
+[18:04:08.326][BACKWARD][END] duration=4.704s
+[18:04:08.566][FORWARD][START] micro_step=274
+[18:04:10.898][FORWARD][END] duration=1.892s | loss=1.8461
+[18:04:10.898][BACKWARD][START] 
+[18:04:15.610][BACKWARD][END] duration=4.712s
+[18:04:15.850][FORWARD][START] micro_step=275
+[18:04:18.186][FORWARD][END] duration=1.896s | loss=3.0755
+[18:04:18.187][BACKWARD][START] 
+[18:04:22.904][BACKWARD][END] duration=4.718s
+[18:04:23.144][FORWARD][START] micro_step=276
+[18:04:25.475][FORWARD][END] duration=1.892s | loss=1.9067
+[18:04:25.475][BACKWARD][START] 
+[18:04:30.190][BACKWARD][END] duration=4.715s
+[18:04:30.429][FORWARD][START] micro_step=277
+[18:04:32.764][FORWARD][END] duration=1.894s | loss=1.7914
+[18:04:32.764][BACKWARD][START] 
+[18:04:37.475][BACKWARD][END] duration=4.711s
+[18:04:37.715][FORWARD][START] micro_step=278
+[18:04:40.049][FORWARD][END] duration=1.895s | loss=2.0453
+[18:04:40.049][BACKWARD][START] 
+[18:04:44.772][BACKWARD][END] duration=4.724s
+[18:04:45.012][FORWARD][START] micro_step=279
+[18:04:47.346][FORWARD][END] duration=1.894s | loss=1.9758
+[18:04:47.346][BACKWARD][START] 
+[18:04:52.065][BACKWARD][END] duration=4.719s
+[18:04:52.305][FORWARD][START] micro_step=280
+[18:04:54.640][FORWARD][END] duration=1.896s | loss=2.2069
+[18:04:54.640][BACKWARD][START] 
+[18:04:59.351][BACKWARD][END] duration=4.711s
+[18:04:59.591][FORWARD][START] micro_step=281
+[18:05:01.927][FORWARD][END] duration=1.896s | loss=2.0476
+[18:05:01.928][BACKWARD][START] 
+[18:05:06.648][BACKWARD][END] duration=4.721s
+[18:05:06.888][FORWARD][START] micro_step=282
+[18:05:09.221][FORWARD][END] duration=1.894s | loss=2.4140
+[18:05:09.222][BACKWARD][START] 
+[18:05:13.936][BACKWARD][END] duration=4.714s
+[18:05:14.176][FORWARD][START] micro_step=283
+[18:05:16.508][FORWARD][END] duration=1.893s | loss=1.6350
+[18:05:16.508][BACKWARD][START] 
+[18:05:21.227][BACKWARD][END] duration=4.719s
+[18:05:21.466][FORWARD][START] micro_step=284
+[18:05:23.797][FORWARD][END] duration=1.891s | loss=1.8782
+[18:05:23.797][BACKWARD][START] 
+[18:05:28.510][BACKWARD][END] duration=4.713s
+[18:05:28.749][FORWARD][START] micro_step=285
+[18:05:31.090][FORWARD][END] duration=1.899s | loss=1.6099
+[18:05:31.090][BACKWARD][START] 
+[18:05:35.818][BACKWARD][END] duration=4.728s
+[18:05:36.059][FORWARD][START] micro_step=286
+[18:05:38.392][FORWARD][END] duration=1.895s | loss=2.6371
+[18:05:38.392][BACKWARD][START] 
+[18:05:43.118][BACKWARD][END] duration=4.726s
+[18:05:43.359][FORWARD][START] micro_step=287
+[18:05:45.697][FORWARD][END] duration=1.897s | loss=1.8402
+[18:05:45.697][BACKWARD][START] 
+[18:05:50.412][BACKWARD][END] duration=4.715s
+[18:05:50.652][FORWARD][START] micro_step=288
+[18:05:52.991][FORWARD][END] duration=1.898s | loss=2.5710
+[18:05:52.991][BACKWARD][START] 
+[18:05:57.716][BACKWARD][END] duration=4.726s
+[18:05:57.956][STEP][BEGIN] 
+[18:05:57.978][STEP][DONE] duration=0.022s | global_step=18
+[step 0018] loss=33.3315 lr=3.60e-06 tokens/s=561.6
+[18:05:57.979][FORWARD][START] micro_step=289
+[18:06:00.311][FORWARD][END] duration=1.893s | loss=1.7240
+[18:06:00.311][BACKWARD][START] 
+[18:06:05.030][BACKWARD][END] duration=4.719s
+[18:06:05.270][FORWARD][START] micro_step=290
+[18:06:07.605][FORWARD][END] duration=1.895s | loss=2.2802
+[18:06:07.605][BACKWARD][START] 
+[18:06:12.322][BACKWARD][END] duration=4.717s
+[18:06:12.564][FORWARD][START] micro_step=291
+[18:06:14.895][FORWARD][END] duration=1.892s | loss=1.8230
+[18:06:14.895][BACKWARD][START] 
+[18:06:19.608][BACKWARD][END] duration=4.713s
+[18:06:19.848][FORWARD][START] micro_step=292
+[18:06:22.181][FORWARD][END] duration=1.894s | loss=1.7908
+[18:06:22.181][BACKWARD][START] 
+[18:06:26.896][BACKWARD][END] duration=4.715s
+[18:06:27.137][FORWARD][START] micro_step=293
+[18:06:29.475][FORWARD][END] duration=1.898s | loss=1.8726
+[18:06:29.475][BACKWARD][START] 
+[18:06:34.192][BACKWARD][END] duration=4.717s
+[18:06:34.431][FORWARD][START] micro_step=294
+[18:06:36.765][FORWARD][END] duration=1.894s | loss=2.3544
+[18:06:36.765][BACKWARD][START] 
+[18:06:41.487][BACKWARD][END] duration=4.722s
+[18:06:41.727][FORWARD][START] micro_step=295
+[18:06:44.061][FORWARD][END] duration=1.896s | loss=2.0005
+[18:06:44.062][BACKWARD][START] 
+[18:06:48.778][BACKWARD][END] duration=4.717s
+[18:06:49.020][FORWARD][START] micro_step=296
+[18:06:51.354][FORWARD][END] duration=1.894s | loss=2.7455
+[18:06:51.354][BACKWARD][START] 
+[18:06:56.075][BACKWARD][END] duration=4.721s
+[18:06:56.315][FORWARD][START] micro_step=297
+[18:06:58.647][FORWARD][END] duration=1.893s | loss=1.9929
+[18:06:58.647][BACKWARD][START] 
+[18:07:03.368][BACKWARD][END] duration=4.720s
+[18:07:03.608][FORWARD][START] micro_step=298
+[18:07:05.941][FORWARD][END] duration=1.895s | loss=1.8264
+[18:07:05.941][BACKWARD][START] 
+[18:07:10.657][BACKWARD][END] duration=4.715s
+[18:07:10.897][FORWARD][START] micro_step=299
+[18:07:13.227][FORWARD][END] duration=1.892s | loss=1.9710
+[18:07:13.228][BACKWARD][START] 
+[18:07:17.947][BACKWARD][END] duration=4.719s
+[18:07:18.186][FORWARD][START] micro_step=300
+[18:07:20.518][FORWARD][END] duration=1.893s | loss=1.6810
+[18:07:20.519][BACKWARD][START] 
+[18:07:25.235][BACKWARD][END] duration=4.716s
+[18:07:25.474][FORWARD][START] micro_step=301
+[18:07:27.805][FORWARD][END] duration=1.890s | loss=1.5944
+[18:07:27.805][BACKWARD][START] 
+[18:07:32.521][BACKWARD][END] duration=4.716s
+[18:07:32.762][FORWARD][START] micro_step=302
+[18:07:35.094][FORWARD][END] duration=1.893s | loss=2.3143
+[18:07:35.095][BACKWARD][START] 
+[18:07:39.816][BACKWARD][END] duration=4.722s
+[18:07:40.057][FORWARD][START] micro_step=303
+[18:07:42.391][FORWARD][END] duration=1.895s | loss=2.0712
+[18:07:42.391][BACKWARD][START] 
+[18:07:47.111][BACKWARD][END] duration=4.720s
+[18:07:47.351][FORWARD][START] micro_step=304
+[18:07:49.686][FORWARD][END] duration=1.896s | loss=2.0749
+[18:07:49.686][BACKWARD][START] 
+[18:07:54.409][BACKWARD][END] duration=4.722s
+[18:07:54.648][STEP][BEGIN] 
+[18:07:54.665][STEP][DONE] duration=0.017s | global_step=19
+[step 0019] loss=32.1172 lr=3.80e-06 tokens/s=561.6
+[18:07:54.665][FORWARD][START] micro_step=305
+[18:07:57.000][FORWARD][END] duration=1.895s | loss=2.0766
+[18:07:57.000][BACKWARD][START] 
+[18:08:01.715][BACKWARD][END] duration=4.715s
+[18:08:01.956][FORWARD][START] micro_step=306
+[18:08:04.293][FORWARD][END] duration=1.896s | loss=1.7776
+[18:08:04.293][BACKWARD][START] 
+[18:08:09.016][BACKWARD][END] duration=4.722s
+[18:08:09.256][FORWARD][START] micro_step=307
+[18:08:11.588][FORWARD][END] duration=1.893s | loss=1.5541
+[18:08:11.589][BACKWARD][START] 
+[18:08:16.303][BACKWARD][END] duration=4.714s
+[18:08:16.544][FORWARD][START] micro_step=308
+[18:08:18.878][FORWARD][END] duration=1.893s | loss=2.0000
+[18:08:18.878][BACKWARD][START] 
+[18:08:23.597][BACKWARD][END] duration=4.719s
+[18:08:23.838][FORWARD][START] micro_step=309
+[18:08:26.172][FORWARD][END] duration=1.894s | loss=2.4298
+[18:08:26.172][BACKWARD][START] 
+[18:08:30.897][BACKWARD][END] duration=4.725s
+[18:08:31.138][FORWARD][START] micro_step=310
+[18:08:33.469][FORWARD][END] duration=1.891s | loss=2.8599
+[18:08:33.469][BACKWARD][START] 
+[18:08:38.184][BACKWARD][END] duration=4.715s
+[18:08:38.424][FORWARD][START] micro_step=311
+[18:08:40.760][FORWARD][END] duration=1.896s | loss=2.2190
+[18:08:40.760][BACKWARD][START] 
+[18:08:45.474][BACKWARD][END] duration=4.714s
+[18:08:45.714][FORWARD][START] micro_step=312
+[18:08:48.048][FORWARD][END] duration=1.894s | loss=1.9290
+[18:08:48.048][BACKWARD][START] 
+[18:08:52.768][BACKWARD][END] duration=4.720s
+[18:08:53.007][FORWARD][START] micro_step=313
+[18:08:55.343][FORWARD][END] duration=1.896s | loss=2.1297
+[18:08:55.343][BACKWARD][START] 
+[18:09:00.066][BACKWARD][END] duration=4.723s
+[18:09:00.306][FORWARD][START] micro_step=314
+[18:09:02.639][FORWARD][END] duration=1.895s | loss=1.8486
+[18:09:02.639][BACKWARD][START] 
+[18:09:07.357][BACKWARD][END] duration=4.718s
+[18:09:07.597][FORWARD][START] micro_step=315
+[18:09:09.932][FORWARD][END] duration=1.896s | loss=2.0612
+[18:09:09.932][BACKWARD][START] 
+[18:09:14.658][BACKWARD][END] duration=4.726s
+[18:09:14.899][FORWARD][START] micro_step=316
+[18:09:17.228][FORWARD][END] duration=1.889s | loss=2.1924
+[18:09:17.228][BACKWARD][START] 
+[18:09:21.949][BACKWARD][END] duration=4.721s
+[18:09:22.189][FORWARD][START] micro_step=317
+[18:09:24.524][FORWARD][END] duration=1.896s | loss=2.8130
+[18:09:24.524][BACKWARD][START] 
+[18:09:29.234][BACKWARD][END] duration=4.709s
+[18:09:29.474][FORWARD][START] micro_step=318
+[18:09:31.806][FORWARD][END] duration=1.893s | loss=2.0195
+[18:09:31.806][BACKWARD][START] 
+[18:09:36.522][BACKWARD][END] duration=4.716s
+[18:09:36.764][FORWARD][START] micro_step=319
+[18:09:39.098][FORWARD][END] duration=1.894s | loss=3.2398
+[18:09:39.098][BACKWARD][START] 
+[18:09:43.816][BACKWARD][END] duration=4.718s
+[18:09:44.056][FORWARD][START] micro_step=320
+[18:09:46.390][FORWARD][END] duration=1.894s | loss=2.0224
+[18:09:46.390][BACKWARD][START] 
+[18:09:51.113][BACKWARD][END] duration=4.723s
+[18:09:51.352][STEP][BEGIN] 
+[18:09:51.385][STEP][DONE] duration=0.033s | global_step=20
+[18:09:51.387][CKPT][BEGIN] step=20 | path=~/llm_example/ckpts/step_000020.pt
+[18:10:53.657][CKPT][END] step=20 | duration=62.270s | saved=~/llm_example/ckpts/step_000020.pt
+[step 0020] loss=35.1726 lr=4.00e-06 tokens/s=366.1
+[18:10:53.663][FORWARD][START] micro_step=321
+[18:10:55.998][FORWARD][END] duration=1.897s | loss=1.6798
+[18:10:55.998][BACKWARD][START] 
+[18:11:00.715][BACKWARD][END] duration=4.716s
+[18:11:01.004][FORWARD][START] micro_step=322
+[18:11:03.338][FORWARD][END] duration=1.895s | loss=1.8547
+[18:11:03.338][BACKWARD][START] 
+[18:11:08.053][BACKWARD][END] duration=4.715s
+[18:11:08.293][FORWARD][START] micro_step=323
+[18:11:10.626][FORWARD][END] duration=1.895s | loss=3.1050
+[18:11:10.627][BACKWARD][START] 
+[18:11:15.346][BACKWARD][END] duration=4.719s
+[18:11:15.585][FORWARD][START] micro_step=324
+[18:11:17.922][FORWARD][END] duration=1.897s | loss=2.2477
+[18:11:17.922][BACKWARD][START] 
+[18:11:22.638][BACKWARD][END] duration=4.716s
+[18:11:22.879][FORWARD][START] micro_step=325
+[18:11:25.213][FORWARD][END] duration=1.895s | loss=2.2169
+[18:11:25.213][BACKWARD][START] 
+[18:11:29.935][BACKWARD][END] duration=4.722s
+[18:11:30.175][FORWARD][START] micro_step=326
+[18:11:32.512][FORWARD][END] duration=1.896s | loss=1.6758
+[18:11:32.512][BACKWARD][START] 
+[18:11:37.229][BACKWARD][END] duration=4.717s
+[18:11:37.469][FORWARD][START] micro_step=327
+[18:11:39.801][FORWARD][END] duration=1.894s | loss=1.4333
+[18:11:39.801][BACKWARD][START] 
+[18:11:44.515][BACKWARD][END] duration=4.714s
+[18:11:44.756][FORWARD][START] micro_step=328
+[18:11:47.090][FORWARD][END] duration=1.895s | loss=2.2651
+[18:11:47.090][BACKWARD][START] 
+[18:11:51.817][BACKWARD][END] duration=4.726s
+[18:11:52.057][FORWARD][START] micro_step=329
+[18:11:54.391][FORWARD][END] duration=1.895s | loss=2.0586
+[18:11:54.391][BACKWARD][START] 
+[18:11:59.117][BACKWARD][END] duration=4.726s
+[18:11:59.357][FORWARD][START] micro_step=330
+[18:12:01.692][FORWARD][END] duration=1.895s | loss=2.3546
+[18:12:01.692][BACKWARD][START] 
+[18:12:06.417][BACKWARD][END] duration=4.725s
+[18:12:06.657][FORWARD][START] micro_step=331
+[18:12:08.991][FORWARD][END] duration=1.894s | loss=1.5242
+[18:12:08.991][BACKWARD][START] 
+[18:12:13.716][BACKWARD][END] duration=4.724s
+[18:12:13.957][FORWARD][START] micro_step=332
+[18:12:16.293][FORWARD][END] duration=1.896s | loss=1.7684
+[18:12:16.294][BACKWARD][START] 
+[18:12:21.017][BACKWARD][END] duration=4.723s
+[18:12:21.257][FORWARD][START] micro_step=333
+[18:12:23.593][FORWARD][END] duration=1.897s | loss=2.1118
+[18:12:23.593][BACKWARD][START] 
+[18:12:28.317][BACKWARD][END] duration=4.724s
+[18:12:28.558][FORWARD][START] micro_step=334
+[18:12:30.893][FORWARD][END] duration=1.895s | loss=2.2648
+[18:12:30.893][BACKWARD][START] 
+[18:12:35.618][BACKWARD][END] duration=4.724s
+[18:12:35.858][FORWARD][START] micro_step=335
+[18:12:38.192][FORWARD][END] duration=1.893s | loss=2.0136
+[18:12:38.192][BACKWARD][START] 
+[18:12:42.913][BACKWARD][END] duration=4.721s
+[18:12:43.154][FORWARD][START] micro_step=336
+[18:12:45.489][FORWARD][END] duration=1.894s | loss=2.2571
+[18:12:45.489][BACKWARD][START] 
+[18:12:50.214][BACKWARD][END] duration=4.725s
+[18:12:50.454][STEP][BEGIN] 
+[18:12:50.471][STEP][DONE] duration=0.017s | global_step=21
+[step 0021] loss=32.8314 lr=4.20e-06 tokens/s=561.0
+[18:12:50.472][FORWARD][START] micro_step=337
+[18:12:52.811][FORWARD][END] duration=1.898s | loss=2.6384
+[18:12:52.811][BACKWARD][START] 
+[18:12:57.535][BACKWARD][END] duration=4.724s
+[18:12:57.776][FORWARD][START] micro_step=338
+[18:13:00.111][FORWARD][END] duration=1.895s | loss=2.0121
+[18:13:00.111][BACKWARD][START] 
+[18:13:04.837][BACKWARD][END] duration=4.726s
+[18:13:05.078][FORWARD][START] micro_step=339
+[18:13:07.412][FORWARD][END] duration=1.895s | loss=2.0015
+[18:13:07.412][BACKWARD][START] 
+[18:13:12.137][BACKWARD][END] duration=4.725s
+[18:13:12.378][FORWARD][START] micro_step=340
+[18:13:14.709][FORWARD][END] duration=1.892s | loss=2.0663
+[18:13:14.709][BACKWARD][START] 
+[18:13:19.427][BACKWARD][END] duration=4.718s
+[18:13:19.666][FORWARD][START] micro_step=341
+[18:13:21.999][FORWARD][END] duration=1.894s | loss=1.4589
+[18:13:21.999][BACKWARD][START] 
+[18:13:26.715][BACKWARD][END] duration=4.716s
+[18:13:26.955][FORWARD][START] micro_step=342
+[18:13:29.289][FORWARD][END] duration=1.895s | loss=2.2455
+[18:13:29.289][BACKWARD][START] 
+[18:13:34.015][BACKWARD][END] duration=4.726s
+[18:13:34.256][FORWARD][START] micro_step=343
+[18:13:36.589][FORWARD][END] duration=1.894s | loss=2.1176
+[18:13:36.589][BACKWARD][START] 
+[18:13:41.314][BACKWARD][END] duration=4.725s
+[18:13:41.555][FORWARD][START] micro_step=344
+[18:13:43.886][FORWARD][END] duration=1.890s | loss=1.7713
+[18:13:43.886][BACKWARD][START] 
+[18:13:48.603][BACKWARD][END] duration=4.717s
+[18:13:48.844][FORWARD][START] micro_step=345
+[18:13:51.180][FORWARD][END] duration=1.896s | loss=2.0703
+[18:13:51.180][BACKWARD][START] 
+[18:13:55.899][BACKWARD][END] duration=4.719s
+[18:13:56.140][FORWARD][START] micro_step=346
+[18:13:58.475][FORWARD][END] duration=1.895s | loss=2.7017
+[18:13:58.475][BACKWARD][START] 
+[18:14:03.197][BACKWARD][END] duration=4.722s
+[18:14:03.438][FORWARD][START] micro_step=347
+[18:14:05.773][FORWARD][END] duration=1.896s | loss=1.7981
+[18:14:05.773][BACKWARD][START] 
+[18:14:10.498][BACKWARD][END] duration=4.725s
+[18:14:10.739][FORWARD][START] micro_step=348
+[18:14:13.072][FORWARD][END] duration=1.894s | loss=2.0613
+[18:14:13.072][BACKWARD][START] 
+[18:14:17.794][BACKWARD][END] duration=4.722s
+[18:14:18.034][FORWARD][START] micro_step=349
+[18:14:20.370][FORWARD][END] duration=1.897s | loss=2.2917
+[18:14:20.370][BACKWARD][START] 
+[18:14:25.094][BACKWARD][END] duration=4.724s
+[18:14:25.335][FORWARD][START] micro_step=350
+[18:14:27.671][FORWARD][END] duration=1.897s | loss=2.6037
+[18:14:27.671][BACKWARD][START] 
+[18:14:32.395][BACKWARD][END] duration=4.724s
+[18:14:32.635][FORWARD][START] micro_step=351
+[18:14:34.972][FORWARD][END] duration=1.896s | loss=1.7480
+[18:14:34.972][BACKWARD][START] 
+[18:14:39.698][BACKWARD][END] duration=4.726s
+[18:14:39.939][FORWARD][START] micro_step=352
+[18:14:42.276][FORWARD][END] duration=1.897s | loss=2.5047
+[18:14:42.276][BACKWARD][START] 
+[18:14:46.997][BACKWARD][END] duration=4.721s
+[18:14:47.237][STEP][BEGIN] 
+[18:14:47.255][STEP][DONE] duration=0.018s | global_step=22
+[step 0022] loss=34.0912 lr=4.40e-06 tokens/s=561.2
+[18:14:47.255][FORWARD][START] micro_step=353
+[18:14:49.592][FORWARD][END] duration=1.896s | loss=2.2504
+[18:14:49.592][BACKWARD][START] 
+[18:14:54.310][BACKWARD][END] duration=4.719s
+[18:14:54.551][FORWARD][START] micro_step=354
+[18:14:56.887][FORWARD][END] duration=1.895s | loss=1.7687
+[18:14:56.887][BACKWARD][START] 
+[18:15:01.609][BACKWARD][END] duration=4.722s
+[18:15:01.848][FORWARD][START] micro_step=355
+[18:15:04.182][FORWARD][END] duration=1.893s | loss=2.0733
+[18:15:04.182][BACKWARD][START] 
+[18:15:08.893][BACKWARD][END] duration=4.711s
+[18:15:09.132][FORWARD][START] micro_step=356
+[18:15:11.469][FORWARD][END] duration=1.896s | loss=1.9061
+[18:15:11.469][BACKWARD][START] 
+[18:15:16.199][BACKWARD][END] duration=4.730s
+[18:15:16.440][FORWARD][START] micro_step=357
+[18:15:18.772][FORWARD][END] duration=1.893s | loss=2.8018
+[18:15:18.772][BACKWARD][START] 
+[18:15:23.495][BACKWARD][END] duration=4.723s
+[18:15:23.735][FORWARD][START] micro_step=358
+[18:15:26.068][FORWARD][END] duration=1.894s | loss=2.0034
+[18:15:26.068][BACKWARD][START] 
+[18:15:30.792][BACKWARD][END] duration=4.724s
+[18:15:31.032][FORWARD][START] micro_step=359
+[18:15:33.365][FORWARD][END] duration=1.894s | loss=2.0023
+[18:15:33.365][BACKWARD][START] 
+[18:15:38.072][BACKWARD][END] duration=4.708s
+[18:15:38.312][FORWARD][START] micro_step=360
+[18:15:40.645][FORWARD][END] duration=1.894s | loss=2.1845
+[18:15:40.645][BACKWARD][START] 
+[18:15:45.362][BACKWARD][END] duration=4.717s
+[18:15:45.603][FORWARD][START] micro_step=361
+[18:15:47.937][FORWARD][END] duration=1.895s | loss=1.9872
+[18:15:47.938][BACKWARD][START] 
+[18:15:52.658][BACKWARD][END] duration=4.720s
+[18:15:52.899][FORWARD][START] micro_step=362
+[18:15:55.228][FORWARD][END] duration=1.891s | loss=1.9398
+[18:15:55.228][BACKWARD][START] 
+[18:15:59.943][BACKWARD][END] duration=4.715s
+[18:16:00.184][FORWARD][START] micro_step=363
+[18:16:02.518][FORWARD][END] duration=1.895s | loss=2.8274
+[18:16:02.518][BACKWARD][START] 
+[18:16:07.234][BACKWARD][END] duration=4.716s
+[18:16:07.475][FORWARD][START] micro_step=364
+[18:16:09.811][FORWARD][END] duration=1.896s | loss=2.1819
+[18:16:09.811][BACKWARD][START] 
+[18:16:14.539][BACKWARD][END] duration=4.728s
+[18:16:14.780][FORWARD][START] micro_step=365
+[18:16:17.118][FORWARD][END] duration=1.898s | loss=2.8009
+[18:16:17.118][BACKWARD][START] 
+[18:16:21.837][BACKWARD][END] duration=4.719s
+[18:16:22.078][FORWARD][START] micro_step=366
+[18:16:24.411][FORWARD][END] duration=1.894s | loss=1.7746
+[18:16:24.411][BACKWARD][START] 
+[18:16:29.132][BACKWARD][END] duration=4.720s
+[18:16:29.371][FORWARD][START] micro_step=367
+[18:16:31.702][FORWARD][END] duration=1.891s | loss=1.6387
+[18:16:31.702][BACKWARD][START] 
+[18:16:36.412][BACKWARD][END] duration=4.710s
+[18:16:36.652][FORWARD][START] micro_step=368
+[18:16:38.985][FORWARD][END] duration=1.893s | loss=1.6340
+[18:16:38.985][BACKWARD][START] 
+[18:16:43.698][BACKWARD][END] duration=4.713s
+[18:16:43.938][STEP][BEGIN] 
+[18:16:43.957][STEP][DONE] duration=0.019s | global_step=23
+[step 0023] loss=33.7752 lr=4.60e-06 tokens/s=561.6
+[18:16:43.958][FORWARD][START] micro_step=369
+[18:16:46.290][FORWARD][END] duration=1.893s | loss=2.0667
+[18:16:46.290][BACKWARD][START] 
+[18:16:51.012][BACKWARD][END] duration=4.722s
+[18:16:51.253][FORWARD][START] micro_step=370
+[18:16:53.585][FORWARD][END] duration=1.892s | loss=2.3370
+[18:16:53.585][BACKWARD][START] 
+[18:16:58.302][BACKWARD][END] duration=4.716s
+[18:16:58.543][FORWARD][START] micro_step=371
+[18:17:00.875][FORWARD][END] duration=1.893s | loss=2.3668
+[18:17:00.875][BACKWARD][START] 
+[18:17:05.598][BACKWARD][END] duration=4.723s
+[18:17:05.839][FORWARD][START] micro_step=372
+[18:17:08.176][FORWARD][END] duration=1.897s | loss=1.7860
+[18:17:08.176][BACKWARD][START] 
+[18:17:12.898][BACKWARD][END] duration=4.722s
+[18:17:13.139][FORWARD][START] micro_step=373
+[18:17:15.471][FORWARD][END] duration=1.893s | loss=1.9191
+[18:17:15.471][BACKWARD][START] 
+[18:17:20.193][BACKWARD][END] duration=4.722s
+[18:17:20.433][FORWARD][START] micro_step=374
+[18:17:22.766][FORWARD][END] duration=1.894s | loss=1.9834
+[18:17:22.766][BACKWARD][START] 
+[18:17:27.482][BACKWARD][END] duration=4.715s
+[18:17:27.722][FORWARD][START] micro_step=375
+[18:17:30.058][FORWARD][END] duration=1.896s | loss=2.5405
+[18:17:30.059][BACKWARD][START] 
+[18:17:34.778][BACKWARD][END] duration=4.720s
+[18:17:35.019][FORWARD][START] micro_step=376
+[18:17:37.352][FORWARD][END] duration=1.893s | loss=1.8746
+[18:17:37.352][BACKWARD][START] 
+[18:17:42.073][BACKWARD][END] duration=4.720s
+[18:17:42.313][FORWARD][START] micro_step=377
+[18:17:44.653][FORWARD][END] duration=1.901s | loss=2.9307
+[18:17:44.654][BACKWARD][START] 
+[18:17:49.376][BACKWARD][END] duration=4.722s
+[18:17:49.615][FORWARD][START] micro_step=378
+[18:17:51.953][FORWARD][END] duration=1.897s | loss=1.8294
+[18:17:51.953][BACKWARD][START] 
+[18:17:56.680][BACKWARD][END] duration=4.727s
+[18:17:56.922][FORWARD][START] micro_step=379
+[18:17:59.257][FORWARD][END] duration=1.896s | loss=2.4320
+[18:17:59.257][BACKWARD][START] 
+[18:18:03.977][BACKWARD][END] duration=4.720s
+[18:18:04.217][FORWARD][START] micro_step=380
+[18:18:06.549][FORWARD][END] duration=1.894s | loss=2.0781
+[18:18:06.549][BACKWARD][START] 
+[18:18:11.274][BACKWARD][END] duration=4.724s
+[18:18:11.515][FORWARD][START] micro_step=381
+[18:18:13.847][FORWARD][END] duration=1.894s | loss=1.8097
+[18:18:13.847][BACKWARD][START] 
+[18:18:18.567][BACKWARD][END] duration=4.720s
+[18:18:18.807][FORWARD][START] micro_step=382
+[18:18:21.144][FORWARD][END] duration=1.897s | loss=2.0783
+[18:18:21.144][BACKWARD][START] 
+[18:18:25.861][BACKWARD][END] duration=4.717s
+[18:18:26.103][FORWARD][START] micro_step=383
+[18:18:28.436][FORWARD][END] duration=1.893s | loss=2.4324
+[18:18:28.436][BACKWARD][START] 
+[18:18:33.156][BACKWARD][END] duration=4.720s
+[18:18:33.397][FORWARD][START] micro_step=384
+[18:18:35.731][FORWARD][END] duration=1.895s | loss=2.0971
+[18:18:35.731][BACKWARD][START] 
+[18:18:40.457][BACKWARD][END] duration=4.725s
+[18:18:40.697][STEP][BEGIN] 
+[18:18:40.741][STEP][DONE] duration=0.044s | global_step=24
+[18:18:40.747][CKPT][BEGIN] step=24 | path=~/llm_example/ckpts/step_000024.pt
