@@ -1,28 +1,17 @@
 # Data Collection
 
-A lightweight framework for running LLM training and inference workloads on Slurm-based HPC clusters.
+Scripts used to collect the LLM GPU power traces used in this paper, released
+for double-blind review. The repository is split by workload type:
 
-## Structure
+- [`train/`](train/) — Slurm launch scripts and training harnesses that
+  produced the training-side power traces, on HPC clusters.
+- [`inference/`](inference/) — the serving-campaign pipeline (dataset
+  preparation, GPU provisioning, vLLM launch, telemetry capture, upload) that
+  produced the inference-side power traces, on rented GPU providers.
 
-- `env.sh`  
-  Environment setup script.
-
-- `launch/`  
-  Entry scripts for submitting jobs (`sbatch` / `srun`), grouped by workload type (train / infer) and backend.
-
-- `templates/`  
-  Slurm job templates (resource config + unified logging + optional tracing), invoked by scripts in `launch/`.
-
-- `pybench/`  
-  Python workload implementations (training / inference / small tests).
-
-- `logs_train/`  
-  Training run outputs (e.g., `stdout.log`, `stderr.log`, `train_runtime.log`, `power_trace.csv`).
-
-- `logs_infer/`  
-  Inference run outputs (e.g., `stdout.log`, `stderr.log`, `power_trace.csv`).
-
-
-## Anonymization note
-
-This repository is released for double-blind review. Slurm account names, notification e-mails, cluster hostnames, user names and Hugging Face dataset identifiers have been replaced by placeholders (`<slurm-account>`, `<user>`, `<cluster>`, `<hf-dataset-id>`). Set `TRAIN_DATASET` / `PROMPT_DATASET` in the environment before running the training or prompt-bank scripts.
+Each part has its own `README.md` with more detail. Both have been anonymized
+for review: account names, personal notification endpoints, cluster hostnames,
+Hugging Face/Docker Hub usernames, and dataset/storage identifiers have been
+replaced with placeholders (e.g. `<slurm-account>`, `<hf-owner>`,
+`<dockerhub-account>`). Set the indicated environment variables before running
+any script.
