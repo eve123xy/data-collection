@@ -15,3 +15,8 @@ Hugging Face/Docker Hub usernames, and dataset/storage identifiers have been
 replaced with placeholders (e.g. `<slurm-account>`, `<hf-owner>`,
 `<dockerhub-account>`). Set the indicated environment variables before running
 any script.
+
+## License
+
+- **Code** — the profiling, collection, and analysis scripts in this repository — is released under the [Apache License 2.0](LICENSE).
+- **Data** — the GPU power traces and associated run metadata collected with these scripts — is released under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). The released dataset is browsable in the accompanying trace explorer.
